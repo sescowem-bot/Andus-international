@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SERVICES } from "@/lib/data";
 import Reveal from "@/components/ui/Reveal";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerChildren";
@@ -7,8 +8,7 @@ import { ArrowRight } from "lucide-react";
 export default function ServicesGrid() {
   return (
     <section className="section bg-slate-50" id="services">
-      {/* Subtle tint top */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(15,107,58,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(0,112,60,0.05)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="container-xl relative">
         <Reveal className="text-center mb-14">
@@ -25,24 +25,33 @@ export default function ServicesGrid() {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {/* Featured card — spans 2 cols */}
-          <Reveal className="md:col-span-2" delay={0}>
+
+          {/* Featured card — Financial Services spans 2 cols */}
+          <Reveal className="md:col-span-2">
             <Link href={SERVICES[0].href} className="block h-full group">
-              <div className="h-full rounded-2xl bg-gradient-to-br from-green-700 to-green-900 p-8 text-white relative overflow-hidden border border-green-800 transition-all duration-300 group-hover:shadow-brand-lg group-hover:-translate-y-1 min-h-[280px]">
+              <div className="relative h-full rounded-2xl overflow-hidden bg-gradient-to-br from-green-700 to-green-900 min-h-[300px] transition-all duration-300 group-hover:shadow-brand-lg group-hover:-translate-y-1">
                 {/* BG decoration */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
 
-                <div className="relative z-10">
+                {/* Dot pattern */}
+                <div className="absolute inset-0 opacity-[0.07]"
+                  style={{backgroundImage:"radial-gradient(circle,rgba(255,255,255,0.8) 1px,transparent 1px)",backgroundSize:"24px 24px"}} />
+
+                <div className="relative z-10 p-8 h-full flex flex-col">
                   <div className="flex items-start justify-between mb-7">
                     <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center text-2xl">
                       {SERVICES[0].icon}
                     </div>
-                    <span className="font-mono text-xs text-white/50">{SERVICES[0].number}</span>
+                    <span className="font-mono text-xs text-white/40">{SERVICES[0].number}</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-3 leading-snug">{SERVICES[0].title}</h3>
-                  <p className="text-white/75 text-sm leading-relaxed mb-6">{SERVICES[0].description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 leading-snug">
+                    {SERVICES[0].title}
+                  </h3>
+                  <p className="text-white/75 text-sm leading-relaxed mb-6 flex-1">
+                    {SERVICES[0].description}
+                  </p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     {SERVICES[0].features.slice(0, 3).map((f) => (
@@ -52,7 +61,7 @@ export default function ServicesGrid() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm font-semibold text-green-300">
+                  <div className="flex items-center gap-2 text-sm font-semibold text-green-300 group-hover:text-white transition-colors">
                     Explore Service
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -66,18 +75,39 @@ export default function ServicesGrid() {
             {SERVICES.slice(1).map((service) => (
               <StaggerItem key={service.id}>
                 <Link href={service.href} className="block h-full group">
-                  <div className="card-premium h-full p-6 rounded-2xl min-h-[200px] flex flex-col">
-                    <div className="flex items-start justify-between mb-5">
-                      <div className="icon-box text-xl">{service.icon}</div>
-                      <span className="font-mono text-xs text-slate-400">{service.number}</span>
+                  <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden h-full transition-all duration-300 group-hover:border-green-200 group-hover:shadow-card-hover group-hover:-translate-y-1 min-h-[220px] flex flex-col">
+                    {/* Real image */}
+                    <div className="relative h-36 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+                      {/* Number badge */}
+                      <span className="absolute top-2.5 right-3 font-mono text-xs text-white/60 font-bold">
+                        {service.number}
+                      </span>
+                      {/* Icon */}
+                      <div className="absolute bottom-2.5 left-3 w-8 h-8 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center text-base">
+                        {service.icon}
+                      </div>
                     </div>
-                    <h3 className="font-bold text-slate-900 text-base mb-2 leading-snug group-hover:text-green-700 transition-colors flex-1">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-500 text-xs leading-relaxed mb-4 line-clamp-2">{service.short}</p>
-                    <div className="flex items-center gap-1.5 text-green-700 text-xs font-semibold mt-auto">
-                      Learn More
-                      <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-bold text-slate-900 text-base mb-2 leading-snug group-hover:text-green-700 transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-slate-500 text-xs leading-relaxed mb-4 flex-1 line-clamp-2">
+                        {service.short}
+                      </p>
+                      <div className="flex items-center gap-1.5 text-green-700 text-xs font-semibold mt-auto">
+                        Learn More
+                        <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+                      </div>
                     </div>
                   </div>
                 </Link>

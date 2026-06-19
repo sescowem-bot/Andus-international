@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Award, Users, CheckCircle, TrendingUp, Phone } from "lucide-react";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import { SITE } from "@/lib/data";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -11,33 +13,33 @@ const fadeUp = (delay = 0) => ({
 });
 
 const TRUST_PILLS = [
-  { icon: Shield,    label: "CAC Registered"      },
-  { icon: Award,     label: "Licensed & Regulated" },
-  { icon: Users,     label: "500+ Clients Served"  },
-  { icon: TrendingUp,label: "5+ Years Excellence"  },
+  { icon: Shield,     label: "Fully Registered & Licensed" },
+  { icon: Award,      label: "CAC Certified"               },
+  { icon: Users,      label: "500+ Clients Served"         },
+  { icon: TrendingUp, label: "5+ Years Excellence"         },
 ];
 
 const CHECKLIST = [
   "Fast loan processing — decisions in 24–72 hrs",
   "No hidden fees — fully transparent terms",
-  "Seven business divisions under one roof",
-  "Serving individuals & businesses across Nigeria",
+  "Licensed money lender operating across Nigeria",
+  "Seven business divisions under one trusted roof",
 ];
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-white pt-20">
-      {/* ── Background layers ── */}
+      {/* Background layers */}
       <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_60%_-5%,rgba(15,107,58,0.07)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_60%_-5%,rgba(0,112,60,0.07)_0%,transparent_70%)] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-50 rounded-full blur-3xl opacity-60 -translate-y-1/3 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-50 rounded-full blur-3xl opacity-40 translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
       <div className="container-xl relative z-10 grid lg:grid-cols-2 gap-14 xl:gap-20 items-center py-16 md:py-24">
 
-        {/* ── LEFT: Copy ── */}
+        {/* LEFT: Copy */}
         <div>
-          {/* Badge */}
+          {/* Live badge */}
           <motion.div {...fadeUp(0.05)} className="mb-7">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-xs font-semibold text-green-700 font-mono tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-badge-blink" />
@@ -45,22 +47,21 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline - CMS-aware via data-cms */}
           <motion.h1
             {...fadeUp(0.1)}
             className="text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight text-slate-900 leading-[1.04] mb-6"
+            data-cms="hero__heading"
           >
             Empowering{" "}
             <span className="relative inline-block">
               <span className="brand-text">Lives,</span>
               <svg
                 className="absolute -bottom-1 left-0 w-full"
-                viewBox="0 0 200 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
+                viewBox="0 0 200 8" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
               >
-                <path d="M2 6 Q50 2 100 5 Q150 8 198 4" stroke="#1AAF5D" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6" />
+                <path d="M2 6 Q50 2 100 5 Q150 8 198 4" stroke="#00703C" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.5" />
               </svg>
             </span>
             <br />
@@ -68,12 +69,16 @@ export default function Hero() {
             <span className="text-green-700">Communities</span>
           </motion.h1>
 
-          {/* Sub */}
-          <motion.p {...fadeUp(0.15)} className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl">
+          {/* Sub - CMS-aware */}
+          <motion.p
+            {...fadeUp(0.15)}
+            className="text-lg text-slate-500 leading-relaxed mb-8 max-w-xl"
+            data-cms="hero__description"
+          >
             ANDUS International Nigeria Limited — your trusted partner across{" "}
-            <strong className="text-slate-700 font-semibold">seven business divisions</strong> delivering
-            accessible finance, petroleum supply, real estate, logistics, agriculture, and contracting
-            with unwavering integrity.
+            <strong className="text-slate-700 font-semibold">seven business divisions</strong>{" "}
+            delivering accessible finance, petroleum supply, real estate, automobile logistics,
+            agricultural services, and contracting with unwavering integrity.
           </motion.p>
 
           {/* Checklist */}
@@ -92,9 +97,8 @@ export default function Hero() {
               Apply for a Loan
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
-            <Link href="/services" className="btn-outline-lg group">
-              Explore Services
-              <ArrowRight size={16} className="opacity-0 -ml-1 group-hover:opacity-100 group-hover:ml-0 group-hover:translate-x-0.5 transition-all duration-200" />
+            <Link href="/investment" className="btn-outline-lg group">
+              Start Investing
             </Link>
           </motion.div>
 
@@ -109,7 +113,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT: Visual card ── */}
+        {/* RIGHT: Visual card with real company image */}
         <motion.div
           initial={{ opacity: 0, x: 32 }}
           animate={{ opacity: 1, x: 0 }}
@@ -118,30 +122,51 @@ export default function Hero() {
         >
           {/* Main card */}
           <div className="relative bg-white rounded-3xl border border-slate-200 shadow-[0_24px_64px_rgba(0,0,0,0.1)] overflow-hidden">
-            {/* Green top bar */}
-            <div className="h-1.5 bg-brand-gradient w-full" />
+            {/* Green top accent */}
+            <div className="h-1.5 bg-gradient-to-r from-green-700 to-green-500 w-full" />
 
-            <div className="p-8">
+            {/* Real company image */}
+            <div className="relative h-52 overflow-hidden">
+              <Image
+                src={SITE.images.hero}
+                alt="ANDUS International Nigeria — Professional Team"
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 1024px) 0px, 440px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/60 to-transparent" />
+              {/* Live badge overlay */}
+              <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 bg-green-700 rounded-full text-white text-xs font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-300 animate-badge-blink" />
+                Trusted Partner · Nigeria
+              </div>
+            </div>
+
+            <div className="p-7">
               {/* Card header */}
-              <div className="flex items-center justify-between mb-7">
+              <div className="flex items-center justify-between mb-6">
                 <div>
                   <p className="font-mono text-[10px] text-green-700 tracking-[0.2em] uppercase mb-1">A · N · D · U · S</p>
-                  <h3 className="font-bold text-slate-900 text-lg">At a Glance</h3>
+                  <h3 className="font-bold text-slate-900 text-base">At a Glance</h3>
                 </div>
-                <div className="w-11 h-11 rounded-xl bg-green-700 flex items-center justify-center shadow-brand-sm">
-                  <span className="font-bold text-white text-base">NG</span>
+                <div className="w-10 h-10 rounded-xl bg-green-700 flex items-center justify-center shadow-sm">
+                  <span className="font-bold text-white text-sm">NG</span>
                 </div>
               </div>
 
               {/* Stats grid */}
-              <div className="grid grid-cols-2 gap-3 mb-7">
+              <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  { n: 7,   s: "",  l: "Business Divisions"  },
-                  { n: 500, s: "+", l: "Clients Served"      },
-                  { n: 5,   s: "+", l: "Years Active"        },
-                  { n: 100, s: "%", l: "CAC Licensed"        },
+                  { n: 7,   s: "",  l: "Business Divisions"   },
+                  { n: 500, s: "+", l: "Clients Served"       },
+                  { n: 5,   s: "+", l: "Years Active"         },
+                  { n: 100, s: "%", l: "CAC Licensed"         },
                 ].map((stat) => (
-                  <div key={stat.l} className="bg-slate-50 rounded-2xl p-4 border border-slate-100 hover:border-green-200 hover:bg-green-50/40 transition-colors">
+                  <div
+                    key={stat.l}
+                    className="bg-slate-50 rounded-xl p-4 border border-slate-100 hover:border-green-200 hover:bg-green-50/40 transition-colors"
+                  >
                     <div className="text-3xl font-extrabold text-slate-900 leading-none mb-1 tabular-nums">
                       <AnimatedCounter target={stat.n} suffix={stat.s} />
                     </div>
@@ -150,9 +175,13 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Checklist items */}
-              <div className="space-y-2.5 mb-7">
-                {["CAC Registered & Compliant", "Fully Licensed & Regulated", "Fast Loan Approval — 24–72hrs", "Multi-Sector Expertise", "Community-Centred Service"].map((item) => (
+              {/* Feature list */}
+              <div className="space-y-2 mb-6">
+                {[
+                  "Fully Registered & Licensed Money Lender",
+                  "Fast Loan Approval — 24 to 72 Hours",
+                  "Community-Centred, Values-Driven Service",
+                ].map((item) => (
                   <div key={item} className="flex items-center gap-3 py-2 border-b border-slate-100 last:border-0">
                     <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
                       <CheckCircle size={11} className="text-green-600" />
@@ -164,11 +193,14 @@ export default function Hero() {
 
               {/* CTA strip */}
               <div className="grid grid-cols-2 gap-2">
-                <Link href="/loan-application" className="flex items-center justify-center gap-1.5 py-3 rounded-xl bg-green-700 text-white text-xs font-bold hover:bg-green-600 transition-colors shadow-brand-sm">
+                <Link
+                  href="/loan-application"
+                  className="flex items-center justify-center gap-1.5 py-3 rounded-xl bg-green-700 text-white text-xs font-bold hover:bg-green-600 transition-colors shadow-sm"
+                >
                   Apply Now <ArrowRight size={11} />
                 </Link>
                 <a
-                  href={`https://wa.me/2348129972493`}
+                  href={`https://wa.me/${SITE.whatsapp}?text=Hello%20ANDUS%20International%2C%20I%20would%20like%20to%20make%20an%20enquiry.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-1.5 py-3 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold hover:bg-green-50 hover:text-green-700 transition-colors border border-slate-200"
@@ -185,10 +217,9 @@ export default function Hero() {
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -top-4 -left-6 bg-white rounded-xl px-4 py-3 shadow-card border border-slate-200 text-xs z-10"
           >
-            <div className="font-semibold text-green-700 font-mono text-[10px] mb-0.5">Est. Nigeria</div>
+            <div className="font-semibold text-green-700 font-mono text-[10px] mb-0.5">Ogun State, Nigeria</div>
             <div className="text-slate-500">Proudly Nigerian</div>
           </motion.div>
-
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -198,7 +229,6 @@ export default function Hero() {
             <div className="text-slate-500">One Trusted Partner</div>
           </motion.div>
 
-          {/* Decorative ring */}
           <div className="absolute -inset-4 rounded-[2.5rem] border border-green-100 -z-10 pointer-events-none" />
         </motion.div>
       </div>
