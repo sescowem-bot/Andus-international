@@ -1,5 +1,5 @@
 import Image from "next/image";import Link from "next/link";import {ArrowUpRight,ArrowRight,CheckCircle2,Compass} from "lucide-react";
-const links=[{name:"Financial Services",href:"/services/financial-services",image:"/images/divisions/financial-services.svg"},{name:"Energy & Supply",href:"/services/oil-gas",image:"/images/divisions/oil-gas.svg"},{name:"Real Estate",href:"/services/real-estate",image:"/images/divisions/real-estate.svg"}];
+const links=[{name:"Financial Services",href:"/services/financial-services",image:"/images/company/hero.webp"},{name:"Energy & Supply",href:"/services/oil-gas",image:"/images/divisions/oil-gas.webp"},{name:"Real Estate",href:"/services/real-estate",image:"/images/divisions/real-estate.webp"}];
 export default function Hero(){return <section className="relative isolate overflow-hidden bg-[#052F20] pb-16 pt-32 text-white sm:pt-40 lg:pb-24" aria-labelledby="andus-hero">
  <div className="pointer-events-none absolute -right-40 top-0 h-[550px] w-[550px] rounded-full bg-[#338B2E]/20 blur-[110px]" aria-hidden/>
  <div className="pointer-events-none absolute inset-0 opacity-20" style={{backgroundImage:"linear-gradient(rgba(240,255,245,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(240,255,245,.1) 1px,transparent 1px)",backgroundSize:"50px 50px"}} aria-hidden/>

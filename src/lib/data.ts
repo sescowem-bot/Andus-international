@@ -10,11 +10,11 @@ export const SITE = {
   socials: { linkedin: "#", twitter: "#", facebook: "#", instagram: "#" },
   // Real images from their server
   images: {
-    hero:    "/brand/andus-mark.svg",
-    about:   "/brand/andus-mark.svg",
-    whoWeAre:"/brand/andus-mark.svg",
-    logo:    "/brand/andus-mark.svg",
-    logoBig: "/brand/andus-mark.svg",
+    hero:"/images/company/hero.webp",
+    about:"/images/company/contact.webp",
+    whoWeAre:"/images/company/about.webp",
+    logo:    "/brand/andus-original.webp",
+    logoBig: "/brand/andus-original.webp",
   },
   // Backend URLs
   api: {
@@ -36,7 +36,7 @@ export const SERVICES = [
     href: "/services/financial-services",
     oldHref: "/financial-services/",
     features: ["Consumer Loans", "SME Financing", "Asset Finance", "LPO Funding", "Financial Consultation"],
-    image: "/images/divisions/financial-services.svg",
+    image: "/images/divisions/financial-services.webp",
   },
   {
     id: "oil-gas",
@@ -49,7 +49,7 @@ export const SERVICES = [
     href: "/services/oil-gas",
     oldHref: "/oil-gas/",
     features: ["Diesel Supply", "Petroleum Products", "Kerosene", "LPG", "Lubricants"],
-    image: "/images/divisions/oil-gas.svg",
+    image: "/images/divisions/oil-gas.webp",
   },
   {
     id: "real-estate",
@@ -62,7 +62,7 @@ export const SERVICES = [
     href: "/services/real-estate",
     oldHref: "/real-estate/",
     features: ["Property Sales", "Land Acquisition", "Residential Construction", "Commercial Projects", "Property Advisory"],
-    image: "/images/divisions/real-estate.svg",
+    image: "/images/divisions/real-estate.webp",
   },
   {
     id: "automobile-logistics",
@@ -75,7 +75,7 @@ export const SERVICES = [
     href: "/services/automobile-logistics",
     oldHref: "/automobile-logistics/",
     features: ["Vehicle Importation", "Goods Import/Export", "Freight & Cargo", "Customs Clearing", "Warehousing", "Agri-Commodity Export"],
-    image: "/images/divisions/automobile-logistics.svg",
+    image: "/images/divisions/automobile-logistics.webp",
   },
   {
     id: "agriculture",
@@ -88,7 +88,7 @@ export const SERVICES = [
     href: "/services/agriculture",
     oldHref: "/farming-livestock/",
     features: ["Piggery", "Cattle Rearing", "Fish Farming", "Poultry", "Crop Cultivation"],
-    image: "/images/divisions/agriculture.svg",
+    image: "/images/divisions/agriculture.webp",
   },
   {
     id: "general-contracting",
@@ -101,7 +101,7 @@ export const SERVICES = [
     href: "/services/general-contracting",
     oldHref: "/general-contractors/",
     features: ["Building Construction", "Electrical Installations", "Solar Systems", "Metal Fabrication", "Renovation"],
-    image: "/images/divisions/general-contracting.svg",
+    image: "/images/divisions/general-contracting.webp",
   },
   {
     id: "cac-registration",
@@ -114,7 +114,7 @@ export const SERVICES = [
     href: "/services/cac-registration",
     oldHref: "/cac-registration/",
     features: ["Business Name Registration", "Private Limited (Ltd)", "Public Limited (PLC)", "NGO / Trustees", "Post-Incorporation", "TIN & Tax Compliance"],
-    image: "/images/divisions/cac-registration.svg",
+    image: "/images/divisions/cac-registration.webp",
   },
 ];
 

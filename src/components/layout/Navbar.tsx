@@ -13,7 +13,7 @@ useEffect(()=>{setOpen(false);setServiceMenu(false)},[path]);
 return <header className="fixed inset-x-0 top-0 z-50 border-b border-[#DCE9E0] bg-white/[.96] shadow-[0_3px_16px_rgba(5,65,35,.035)] backdrop-blur-xl">
 <div className="container-xl flex h-[78px] items-center justify-between gap-4">
 <Link href="/" aria-label="ANDUS International homepage" className="flex min-w-0 items-center gap-2.5">
- <Image src="/brand/andus-mark.svg" alt="ANDUS logo" width={67} height={61} className="h-[58px] w-[67px] shrink-0 object-contain"/>
+ <Image src="/brand/andus-original.webp" alt="ANDUS logo" width={67} height={61} className="h-[58px] w-[67px] shrink-0 object-contain"/>
  <span className="hidden leading-tight sm:block"><strong className="block text-[15px] font-extrabold tracking-[.025em] text-[#005C38]">ANDUS</strong><small className="block text-[9px] font-bold uppercase tracking-[.1em] text-[#557362]">International Nigeria Ltd</small></span>
 </Link>
 <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">

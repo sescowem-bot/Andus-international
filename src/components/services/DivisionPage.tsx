@@ -19,7 +19,7 @@ export default function DivisionPage({data}:{data:Division}){
      </div>
     </div>
     <div className="relative h-[230px] overflow-hidden rounded-[18px] border border-[#D3E8D8] bg-[#083F2C] shadow-[0_18px_50px_rgba(5,65,40,.09)] sm:h-[290px]">
-      <Image src={"/images/divisions/"+data.slug+".svg"} alt="" fill priority sizes="(max-width:1024px) 100vw, 44vw" className="object-cover"/>
+      <Image src={"/images/divisions/"+data.slug+".webp"} alt="" fill priority sizes="(max-width:1024px) 100vw, 44vw" className="object-cover"/>
       <div className="absolute bottom-4 left-5 right-5 flex justify-between border-t border-white/25 pt-3 text-xs font-semibold uppercase tracking-[.16em] text-white/85"><span>ANDUS International</span><span>{data.index} / 07</span></div>
     </div>
    </div>
