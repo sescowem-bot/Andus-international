@@ -52,3 +52,5 @@ return <form onSubmit={submit} noValidate className="rounded-[18px] border borde
 {error&&<div role="alert" className="mt-4 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-3 text-[13px] leading-6 text-red-800"><AlertCircle size={18} className="mt-0.5 shrink-0"/>{error}</div>}
 <div className="mt-5 flex flex-wrap items-center gap-3"><button type="submit" disabled={status==="sending"} className="inline-flex items-center gap-2 rounded-lg bg-[#005C38] px-6 py-3.5 text-[13px] font-bold text-white transition hover:bg-[#338B2E] disabled:cursor-wait disabled:opacity-60">{status==="sending"?"Sending...":"Send enquiry"}<ArrowUpRight size={17}/></button><a href={waLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-[#C1D8C6] px-5 py-3.5 text-[13px] font-bold text-[#005C38] hover:bg-[#F3F9F4]">Enquire on WhatsApp <ArrowUpRight size={16}/></a></div>
 <p className="mt-4 text-[11px] leading-5 text-[#718C78]">We use the details provided to respond. See the <a href="/privacy" className="font-semibold underline">privacy notice</a>.</p></form>;
+
+}
