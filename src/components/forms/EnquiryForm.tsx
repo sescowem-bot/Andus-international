@@ -14,7 +14,7 @@ const options={
 const labels={contact:"Send an enquiry",loan:"Loan enquiry",cac:"Business registration enquiry",investment:"Investment enquiry"};
 export default function EnquiryForm({variant="contact"}:{variant?:Variant}){
 const [data,setData]=useState<Data>({firstName:"",lastName:"",email:"",phone:"",service:"",message:"",kind:"",proposedName:"",proposedName2:"",amount:"",tenor:""});
-const [status,setStatus]=useState<"idle"|"sending"|"sent"|"error">("idle"),[error,setError]=useState("");
+const [status,setStatus]=useState<"idle"|"sending"|"sent"|"error">("idle"),[error,setError]=useState(""),[reference,setReference]=useState("");
 const put=(k:keyof Data,v:string)=>setData(d=>({...d,[k]:v}));
 useEffect(()=>{if(variant==="contact"){const category=new URLSearchParams(window.location.search).get("service");if(category)setData(d=>({...d,service:category}));}},[variant]);
 const waText=useMemo(()=>{const l=["Hello ANDUS International, I would like to make a "+labels[variant].toLowerCase()+".",data.firstName&&"Name: "+data.firstName+" "+data.lastName,data.phone&&"Phone: "+data.phone,data.kind&&"Service type: "+data.kind,data.proposedName&&"Proposed business name: "+data.proposedName];return l.filter(Boolean).join("\n");},[variant,data.firstName,data.lastName,data.phone,data.kind,data.proposedName]);
@@ -27,14 +27,22 @@ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){setError("Please enter a vali
 if(data.phone.replace(/\D/g,"").length<10){setError("Please enter a valid phone number.");return;}
 if(variant!=="contact"&&!data.kind){setError("Choose an enquiry type.");return;}
 const service=variant==="contact"?(data.service||"General enquiry"):(variant==="loan"?"Financial Services / "+data.kind:variant==="cac"?"CAC Registration / "+data.kind:"Investment / "+data.kind);
-const details=[variant==="loan"&&"Approximate amount (NGN): "+(data.amount||"Discuss with team")+"; Period: "+(data.tenor||"To discuss"),variant==="cac"&&"Proposed name: "+(data.proposedName||"Not entered")+"; Alternative: "+(data.proposedName2||"Not entered"),variant==="investment"&&"Preferred period: "+(data.tenor||"To discuss"),data.message].filter(Boolean).join("\n");
 setStatus("sending");
-try{const res=await fetch("/api/contact",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({firstName:data.firstName,lastName:data.lastName,email:data.email,phone:data.phone,service,message:details})});const result=await res.json().catch(()=>({}));if(!res.ok||!result.success)throw new Error(result.error||"The message was not delivered.");setStatus("sent");}
+try{
+ const res=await fetch("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+   kind:variant,firstName:data.firstName,lastName:data.lastName,email:data.email,phone:data.phone,service,message:data.message,
+   proposedName:variant==="cac"?data.proposedName:"",proposedName2:variant==="cac"?data.proposedName2:"",
+   amount:variant==="loan"?data.amount:"",tenor:data.tenor
+ })});
+ const result=await res.json().catch(()=>({}));
+ if(!res.ok||!result.success||!result.reference)throw new Error(result.error||"Your enquiry was not saved.");
+ setReference(result.reference);setStatus("sent");
+}
 catch(e){setStatus("error");setError(e instanceof Error?e.message:"Unable to deliver online enquiry.");}
 }
 const field="w-full rounded-lg border border-[#CBDDCE] bg-white px-4 py-3 text-[14px] text-[#173D28] outline-none transition placeholder:text-[#93AA99] focus:border-[#338B2E] focus:ring-2 focus:ring-[#338B2E]/15";
 const hint="mb-1.5 block text-[12px] font-bold text-[#355F44]";
-if(status==="sent")return <div role="status" className="rounded-2xl border border-[#B6DCC0] bg-[#EEF8F0] p-8 text-center"><CheckCircle2 size={38} className="mx-auto text-[#005C38]"/><h3 className="mt-4 text-2xl font-bold text-[#083F2C]">Your enquiry was sent.</h3><p className="mt-3 text-sm leading-7 text-[#557362]">ANDUS has received your message. The team will review it and contact you.</p><button type="button" onClick={()=>setStatus("idle")} className="mt-5 rounded-lg border border-[#A7CFB1] px-5 py-2.5 text-sm font-bold text-[#005C38]">Send another enquiry</button></div>;
+if(status==="sent")return <div role="status" className="rounded-2xl border border-[#B6DCC0] bg-[#EEF8F0] p-8 text-center"><CheckCircle2 size={38} className="mx-auto text-[#005C38]"/><h3 className="mt-4 text-2xl font-bold text-[#083F2C]">Your enquiry was sent.</h3><p className="mt-3 text-sm leading-7 text-[#557362]">ANDUS has recorded your enquiry. Keep this reference for follow-up. This is not a final application approval.</p><p className="mt-3 font-mono text-base font-bold text-[#005C38]">{reference}</p><button type="button" onClick={()=>{setReference("");setStatus("idle")}} className="mt-5 rounded-lg border border-[#A7CFB1] px-5 py-2.5 text-sm font-bold text-[#005C38]">Send another enquiry</button></div>;
 return <form onSubmit={submit} noValidate className="rounded-[18px] border border-[#D8E8DC] bg-white p-5 shadow-[0_10px_35px_rgba(0,65,30,.045)] sm:p-7">
 <div className="mb-6 flex items-center justify-between gap-4 border-b border-[#E5EEE6] pb-5"><div><p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#338B2E]">Direct to our team</p><h3 className="mt-2 text-[22px] font-bold text-[#083F2C]">{labels[variant]}</h3></div><Send size={24} className="text-[#338B2E]"/></div>
 <div className="grid gap-4 sm:grid-cols-2">
