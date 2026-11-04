@@ -1,0 +1,33 @@
+name: ANDUS release checks
+on:
+  push:
+    branches: [main, upgrade/andus-green-security-2026-11]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Reproducible installation
+        run: npm ci --no-fund
+      - name: Prevent legacy CMS assets and spam links
+        run: |
+          if git grep -inE 'wp-content/uploads|casinozer|cresus casino|playamazonslots|andus-backend.onrender' -- src public; then
+            echo "Blocked obsolete or suspicious public URL"
+            exit 1
+          fi
+      - name: Validate offline image assets
+        run: |
+          node -e 'const fs=require("node:fs"),sharp=require("sharp");(async()=>{const paths=["public/brand/andus-original.webp","public/images/company/hero.webp","public/images/company/about.webp","public/images/company/contact.webp","public/images/company/loans.webp",...fs.readdirSync("public/images/divisions").filter(n=>n.endsWith(".webp")).map(n=>"public/images/divisions/"+n)];for(const path of paths){const info=await sharp(path).metadata();if(info.format!=="webp"||fs.statSync(path).size<3500)throw Error("Invalid image: "+path)}console.log("Validated",paths.length,"WebP assets")})().catch(e=>{console.error(e);process.exit(1)})'
+      - name: Check production dependency vulnerabilities
+        run: npm audit --omit=dev --audit-level=high
+      - name: Production build
+        run: npm run build
