@@ -18,6 +18,7 @@ export async function submitPublicApplication(req:NextRequest,forcedKind?:string
   const kind=forcedKind || input.kind;
   if(!isKind(kind)) return fail("Choose the correct enquiry category",400);
   if(input.website) return fail("Request rejected",403);
+  if(input.privacyAcknowledged!==true) return fail("Please acknowledge the privacy notice before submitting",422);
   const firstName=safeText(input.firstName,80),lastName=safeText(input.lastName,80);
   const fullName=(firstName+" "+lastName).trim();
   const email=safeText(input.email,180).toLowerCase();
