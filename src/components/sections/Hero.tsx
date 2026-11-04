@@ -1,18 +1,82 @@
-import Image from "next/image";import Link from "next/link";import {ArrowUpRight,ArrowRight,CheckCircle2,Compass} from "lucide-react";
-const links=[{name:"Financial Services",href:"/services/financial-services",image:"/images/company/hero.webp"},{name:"Energy & Supply",href:"/services/oil-gas",image:"/images/divisions/oil-gas.webp"},{name:"Real Estate",href:"/services/real-estate",image:"/images/divisions/real-estate.webp"}];
-export default function Hero(){return <section className="relative isolate overflow-hidden bg-[#052F20] pb-10 pt-28 text-white sm:pt-32 lg:pb-14" aria-labelledby="andus-hero">
- <div className="pointer-events-none absolute -right-40 top-0 h-[550px] w-[550px] rounded-full bg-[#338B2E]/20 blur-[110px]" aria-hidden/>
- <div className="pointer-events-none absolute inset-0 opacity-20" style={{backgroundImage:"linear-gradient(rgba(240,255,245,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(240,255,245,.1) 1px,transparent 1px)",backgroundSize:"50px 50px"}} aria-hidden/>
- <div className="container-xl relative grid items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-14">
-  <div className="andus-entrance"><p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.2em] text-[#B9EAB2]"><span className="h-px w-9 bg-[#9DDA97]"/>ANDUS International Nigeria Limited</p>
-   <h1 id="andus-hero" className="mt-8 max-w-[790px] text-5xl font-extrabold leading-[1.06] tracking-[-.055em] sm:text-6xl xl:text-[5.3rem]">Empowering lives.<br/><span className="text-[#B8EAAA]">Transforming</span><br/>communities.</h1>
-   <p className="mt-7 max-w-[590px] text-[17px] leading-[1.85] text-white/75">Explore seven specialist divisions supporting individuals, growing businesses and communities across Nigeria. One group. Clearer paths to the services you need.</p>
-   <div className="mt-9 flex flex-wrap gap-3"><Link href="/services" className="group inline-flex items-center gap-2 rounded-lg bg-[#338B2E] px-7 py-4 text-sm font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#49A841]">Explore our divisions <ArrowUpRight size={18} className="transition group-hover:translate-x-1 group-hover:-translate-y-1"/></Link><Link href="/contact" className="inline-flex items-center gap-2 rounded-lg border border-white/30 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/10">Speak with our team <ArrowRight size={18}/></Link></div>
-   <div className="mt-11 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-6 text-xs font-semibold tracking-wide text-white/70">{["Seven business divisions","Five core values","Based in Nigeria"].map(s=><span key={s} className="inline-flex items-center gap-2"><CheckCircle2 size={15} className="text-[#B8EAAA]"/>{s}</span>)}</div>
-  </div>
-  <div className="andus-entrance relative grid grid-cols-2 gap-4 sm:gap-5 lg:pl-4"><div className="absolute -inset-7 rounded-[32px] border border-white/10" aria-hidden/><Link href={links[0].href} className="group relative col-span-2 overflow-hidden rounded-[22px] border border-white/15 bg-[#11643D] shadow-[0_25px_70px_rgba(0,0,0,.25)]"><div className="relative h-[220px] sm:h-[270px]"><Image src={links[0].image} alt="" fill priority sizes="(max-width:1024px) 100vw, 42vw" className="object-cover transition duration-700 motion-safe:group-hover:scale-105"/></div><div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-[#041B13]/95 to-transparent px-6 pb-5 pt-16"><span className="text-lg font-bold">01 / Financial Services</span><ArrowUpRight size={22}/></div></Link>
-   {links.slice(1).map((v,i)=><Link key={v.name} href={v.href} className="group overflow-hidden rounded-[18px] border border-white/15 bg-[#11643D]"><div className="relative h-[130px] sm:h-[164px]"><Image src={v.image} alt="" fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition duration-700 motion-safe:group-hover:scale-105"/></div><div className="flex items-center justify-between gap-2 px-4 py-4 text-sm font-bold"><span>0{i+2} / {v.name}</span><ArrowUpRight className="shrink-0" size={17}/></div></Link>)}
-   <div className="pointer-events-none absolute -right-4 -top-6 grid h-16 w-16 place-items-center rounded-full border border-white/25 bg-[#338B2E]/90 text-white shadow-xl"><Compass size={29}/></div>
-  </div>
- </div>
- </section>}
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDownRight, ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { Entrance, ImageDrift } from "@/components/ui/PremiumMotion";
+
+export default function Hero() {
+  return (
+    <section aria-labelledby="andus-hero-heading" className="relative isolate overflow-hidden bg-[#F7FAF6]">
+      <div aria-hidden className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-[#D8ECD8] blur-[95px]" />
+      <div className="container-xl relative grid items-center gap-9 pb-12 pt-[114px] lg:min-h-[650px] lg:grid-cols-[.99fr_1.01fr] lg:gap-12 lg:pb-12 lg:pt-[110px]">
+        <div className="relative z-10 max-w-[640px] py-5">
+          <Entrance>
+            <div className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[.23em] text-[#277344]">
+              <span className="h-[2px] w-8 bg-[#338B2E]" /> ANDUS International Nigeria Limited
+            </div>
+          </Entrance>
+          <Entrance delay={0.08} distance={22}>
+            <h1
+              id="andus-hero-heading"
+              className="mt-5 max-w-[660px] text-[clamp(2.85rem,4.5vw,4.65rem)] leading-[1.09] tracking-[-.048em] text-[#113C2C]"
+              style={{ fontFamily: 'Fraunces, Georgia, serif', fontWeight: 600 }}
+            >
+              Empowering lives.<br />
+              <span className="text-[#338B2E]">Transforming</span><br />
+              communities.
+            </h1>
+          </Entrance>
+          <Entrance delay={0.18}>
+            <p className="mt-5 max-w-[535px] text-[15px] leading-[1.82] text-[#536F5D] sm:text-[16px]">
+              Seven specialist divisions. One shared purpose. ANDUS works across financial services,
+              energy, property, logistics, farming, construction and business registration in Nigeria.
+            </p>
+          </Entrance>
+          <Entrance delay={0.24}>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/services" className="group inline-flex min-h-12 items-center gap-3 rounded-lg bg-[#005C38] px-6 py-3.5 text-[13px] font-bold text-white transition-colors hover:bg-[#177746]">
+                Explore our divisions <ArrowUpRight size={17} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link href="/about" className="group inline-flex min-h-12 items-center gap-3 rounded-lg border border-[#BED7C4] bg-white/80 px-6 py-3.5 text-[13px] font-bold text-[#005C38] transition-colors hover:bg-white">
+                Discover our story <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </Entrance>
+          <Entrance delay={0.3}>
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#D3E6D6] pt-5 text-[11px] font-semibold uppercase tracking-[.055em] text-[#4D705B]">
+              {["Seven divisions", "Five core values", "Nigeria-focused"].map(value => (
+                <span key={value} className="inline-flex items-center gap-2"><Check size={14} className="text-[#338B2E]" />{value}</span>
+              ))}
+            </div>
+          </Entrance>
+        </div>
+        <Entrance delay={0.12} className="relative lg:pl-3">
+          <div className="relative">
+            <ImageDrift className="relative h-[360px] overflow-hidden rounded-[20px] bg-[#B2C6B8] shadow-[0_22px_60px_rgba(6,59,35,.12)] sm:h-[475px] lg:h-[495px]">
+              <Image src="/images/company/hero.webp" alt="ANDUS International corporate image" fill priority sizes="(max-width:1024px) 100vw, 49vw" className="object-cover object-center" />
+            </ImageDrift>
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[135px] rounded-b-[20px] bg-gradient-to-t from-[#03291A]/60 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 flex flex-wrap items-center justify-between gap-3 text-white">
+              <div><span className="block text-[10px] font-bold uppercase tracking-[.22em] text-white/80">Built on integrity</span><span className="mt-1 block text-[16px] font-bold">Driven by purpose.</span></div>
+              <span className="grid h-9 w-9 place-items-center rounded-full border border-white/50 bg-white/10 backdrop-blur-sm"><ArrowDownRight size={19}/></span>
+            </div>
+          </div>
+          <div className="absolute -left-4 top-7 z-10 hidden rounded-xl border border-[#D7E8DA] bg-white/95 px-4 py-3 shadow-[0_12px_35px_rgba(0,48,23,.10)] backdrop-blur-md sm:block">
+            <p className="text-[10px] font-bold uppercase tracking-[.19em] text-[#338B2E]">A.N.D.U.S.</p>
+            <p className="mt-1 text-[12px] font-bold text-[#164932]">Our identity. Our promise.</p>
+          </div>
+        </Entrance>
+      </div>
+      <div className="border-t border-[#DDEAE0] bg-white/85">
+        <div className="container-xl flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3.5">
+          <span className="text-[10px] font-extrabold uppercase tracking-[.2em] text-[#338B2E]">Explore the ANDUS Group</span>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px] font-semibold text-[#355C41]">
+            <Link className="hover:text-[#148147]" href="/services/financial-services">Finance</Link>
+            <Link className="hover:text-[#148147]" href="/services/real-estate">Real Estate</Link>
+            <Link className="hover:text-[#148147]" href="/services/agriculture">Agriculture</Link>
+            <Link className="hover:text-[#148147]" href="/services/cac-registration">Business Registration</Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

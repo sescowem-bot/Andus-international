@@ -1,4 +1,47 @@
-import Link from "next/link";import Image from "next/image";import {ArrowUpRight} from "lucide-react";import {SERVICES} from "@/lib/data";import Reveal from "@/components/ui/Reveal";
-export default function ServicesGrid(){return <section className="bg-[#F5FAF6] py-12 sm:py-16" id="services" aria-labelledby="services-title"><div className="container-xl">
- <Reveal><div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><div><span className="text-xs font-extrabold uppercase tracking-[.2em] text-[#338B2E]">Explore the group</span><h2 id="services-title" className="mt-5 max-w-3xl text-4xl font-bold leading-[1.12] tracking-tight text-[#083F2C] sm:text-5xl">Seven divisions.<br/>One dedicated partner.</h2></div><p className="max-w-md text-base leading-8 text-[#557362]">Browse our business areas and choose the right team for your enquiry, from finance to farming and corporate services.</p></div></Reveal>
- <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{SERVICES.map((service,i)=><Reveal key={service.id} delay={Math.min(i,5)*.05}><Link href={service.href} className="card-premium group flex h-full flex-col overflow-hidden rounded-[20px] border border-[#D7E8DC] bg-white"><div className="relative h-[200px] overflow-hidden bg-[#073F2B]"><Image src={service.image} alt="" fill sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw" className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"/><span className="absolute right-4 top-4 rounded-full border border-white/30 bg-[#052F20]/70 px-3 py-1 text-xs font-bold text-white">0{i+1}</span></div><div className="flex flex-1 flex-col p-7"><h3 className="text-[22px] font-bold leading-snug text-[#083F2C]">{service.title}</h3><p className="mt-4 flex-1 text-sm leading-7 text-[#557362]">{service.description}</p><span className="mt-7 inline-flex items-center gap-2 border-t border-[#E0ECE4] pt-5 text-sm font-bold text-[#005C38]">Learn more <ArrowUpRight size={18} className="transition group-hover:translate-x-1 group-hover:-translate-y-1"/></span></div></Link></Reveal>)}</div></div></section>}
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { SERVICES } from "@/lib/data";
+import { Entrance, HoverLift } from "@/components/ui/PremiumMotion";
+
+export default function ServicesGrid() {
+  return (
+    <section id="services" aria-labelledby="services-heading" className="scroll-mt-24 bg-white py-11 sm:py-14">
+      <div className="container-xl">
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <Entrance>
+            <p className="text-[11px] font-extrabold uppercase tracking-[.22em] text-[#338B2E]">Our capabilities / 01 — 07</p>
+            <h2 id="services-heading" className="mt-3 text-[clamp(2.25rem,3.3vw,3.3rem)] leading-[1.13] tracking-[-.035em] text-[#103D2B]" style={{fontFamily:'Fraunces, Georgia, serif',fontWeight:600}}>
+              Seven divisions. <span className="text-[#338B2E]">One purpose.</span>
+            </h2>
+          </Entrance>
+          <Entrance delay={0.1}>
+            <p className="max-w-[380px] text-[13px] leading-[1.8] text-[#587361]">From capital and energy to property, agriculture and business registration. Explore the full range of ANDUS services.</p>
+          </Entrance>
+        </div>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service, index) => (
+            <Entrance key={service.id} delay={Math.min(index, 5) * 0.045} className="h-full">
+              <HoverLift className="h-full">
+                <Link href={service.href} className="group block h-full overflow-hidden rounded-[16px] border border-[#E0EBE3] bg-white transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(3,54,27,.10)]">
+                  <div className="relative h-[187px] overflow-hidden bg-[#DDE9DF]">
+                    <Image src={service.image} alt={`${service.title} at ANDUS International`} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.055]" />
+                    <span className="absolute right-4 top-4 rounded-full border border-white/50 bg-[#053621]/75 px-3 py-1.5 text-[11px] font-bold tracking-[.08em] text-white backdrop-blur-sm">{String(index + 1).padStart(2, "0")} / 07</span>
+                  </div>
+                  <div className="px-5 pb-5 pt-4">
+                    <h3 className="text-[19px] font-bold leading-tight text-[#103E2B]">{service.title}</h3>
+                    <p className="mt-2 min-h-[49px] text-[13px] leading-[1.8] text-[#587260]">{service.short}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {service.features.slice(0, 2).map(feature => <span key={feature} className="rounded-full border border-[#DDEBE0] bg-[#F7FAF7] px-2.5 py-1 text-[10px] font-semibold text-[#56745E]">{feature}</span>)}
+                    </div>
+                    <div className="mt-4 flex items-center justify-between border-t border-[#EDF2ED] pt-3 text-[12px] font-extrabold text-[#005C38]"><span>Explore division</span><ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+                  </div>
+                </Link>
+              </HoverLift>
+            </Entrance>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
