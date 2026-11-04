@@ -14,7 +14,7 @@ export async function POST(req:NextRequest){
    const parsed=new URL(origin);
    const host=req.headers.get("host")?.toLowerCase();
    const envSite=process.env.NEXT_PUBLIC_SITE_URL;
-   allowed=(parsed.host.toLowerCase()===host && (parsed.protocol==="https:" || process.env.NODE_ENV!=="production" || /^(localhost|127\\.0\\.0\\.1)(:\\d+)?$/.test(host||""))) ||
+   allowed=(parsed.host.toLowerCase()===host && (parsed.protocol==="https:" || parsed.hostname==="localhost" || parsed.hostname==="127.0.0.1")) ||
     parsed.origin===new URL(req.url).origin ||
     (!!envSite && parsed.origin===new URL(envSite).origin);
   } catch {}
