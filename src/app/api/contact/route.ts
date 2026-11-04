@@ -4,8 +4,22 @@ const fail=(error:string,status:number)=>NextResponse.json({success:false,error}
 const escapeHTML=(s:string)=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]||c));
 export async function POST(req:NextRequest){
  if(req.headers.get("content-type")?.split(";")[0]!=="application/json")return fail("Invalid content type",415);
+ const size=Number(req.headers.get("content-length")||0);
+ if(size>20000)return fail("Request too large",413);
+ if(req.headers.get("sec-fetch-site")==="cross-site")return fail("Invalid origin",403);
  const origin=req.headers.get("origin");
- if(origin&&origin!==new URL(req.url).origin&&origin!==process.env.NEXT_PUBLIC_SITE_URL)return fail("Invalid origin",403);
+ if(origin){
+  let allowed=false;
+  try {
+   const parsed=new URL(origin);
+   const host=req.headers.get("host")?.toLowerCase();
+   const envSite=process.env.NEXT_PUBLIC_SITE_URL;
+   allowed=(parsed.host.toLowerCase()===host && (parsed.protocol==="https:" || process.env.NODE_ENV!=="production" || /^(localhost|127\\.0\\.0\\.1)(:\\d+)?$/.test(host||""))) ||
+    parsed.origin===new URL(req.url).origin ||
+    (!!envSite && parsed.origin===new URL(envSite).origin);
+  } catch {}
+  if(!allowed)return fail("Invalid origin",403);
+ }
  let data:Record<string,unknown>;try{data=await req.json()}catch{return fail("Invalid data",400)}
  if(!data||typeof data!=="object")return fail("Invalid form",400);
  const get=(k:string,n:number)=>typeof data[k]==="string"?(data[k] as string).trim().slice(0,n):"";
