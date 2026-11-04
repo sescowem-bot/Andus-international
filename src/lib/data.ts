@@ -10,17 +10,17 @@ export const SITE = {
   socials: { linkedin: "#", twitter: "#", facebook: "#", instagram: "#" },
   // Real images from their server
   images: {
-    hero:    "https://andusinternationalng.com/wp-content/uploads/2026/03/about-image_n1dmfc.jpg",
-    about:   "https://andusinternationalng.com/wp-content/uploads/2026/04/Contact-us.jpeg",
-    whoWeAre:"https://andusinternationalng.com/wp-content/uploads/2026/04/Who-we-are.jpeg",
-    logo:    "https://andusinternationalng.com/wp-content/uploads/2026/02/cropped-logo-bTVtplgx-removebg-preview-94x76.png",
-    logoBig: "https://andusinternationalng.com/wp-content/uploads/2026/02/cropped-logo-bTVtplgx-removebg-preview.png",
+    hero:    "/brand/andus-mark.svg",
+    about:   "/brand/andus-mark.svg",
+    whoWeAre:"/brand/andus-mark.svg",
+    logo:    "/brand/andus-mark.svg",
+    logoBig: "/brand/andus-mark.svg",
   },
   // Backend URLs
   api: {
-    cms:    "https://andus-backend-production.up.railway.app/api/cms/public/",
-    cac:    "https://andus-backend.onrender.com/api",
-    admin:  "https://andus-admin.vercel.app",
+    cms: "",
+    cac: "",
+    admin: "",
   },
 };
 
@@ -36,7 +36,7 @@ export const SERVICES = [
     href: "/services/financial-services",
     oldHref: "/financial-services/",
     features: ["Consumer Loans", "SME Financing", "Asset Finance", "LPO Funding", "Financial Consultation"],
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85",
+    image: "/images/divisions/financial-services.svg",
   },
   {
     id: "oil-gas",
@@ -49,7 +49,7 @@ export const SERVICES = [
     href: "/services/oil-gas",
     oldHref: "/oil-gas/",
     features: ["Diesel Supply", "Petroleum Products", "Kerosene", "LPG", "Lubricants"],
-    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80",
+    image: "/images/divisions/oil-gas.svg",
   },
   {
     id: "real-estate",
@@ -62,7 +62,7 @@ export const SERVICES = [
     href: "/services/real-estate",
     oldHref: "/real-estate/",
     features: ["Property Sales", "Land Acquisition", "Residential Construction", "Commercial Projects", "Property Advisory"],
-    image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
+    image: "/images/divisions/real-estate.svg",
   },
   {
     id: "automobile-logistics",
@@ -75,7 +75,7 @@ export const SERVICES = [
     href: "/services/automobile-logistics",
     oldHref: "/automobile-logistics/",
     features: ["Vehicle Importation", "Goods Import/Export", "Freight & Cargo", "Customs Clearing", "Warehousing", "Agri-Commodity Export"],
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80",
+    image: "/images/divisions/automobile-logistics.svg",
   },
   {
     id: "agriculture",
@@ -88,7 +88,7 @@ export const SERVICES = [
     href: "/services/agriculture",
     oldHref: "/farming-livestock/",
     features: ["Piggery", "Cattle Rearing", "Fish Farming", "Poultry", "Crop Cultivation"],
-    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&q=80",
+    image: "/images/divisions/agriculture.svg",
   },
   {
     id: "general-contracting",
@@ -101,7 +101,7 @@ export const SERVICES = [
     href: "/services/general-contracting",
     oldHref: "/general-contractors/",
     features: ["Building Construction", "Electrical Installations", "Solar Systems", "Metal Fabrication", "Renovation"],
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
+    image: "/images/divisions/general-contracting.svg",
   },
   {
     id: "cac-registration",
@@ -114,16 +114,11 @@ export const SERVICES = [
     href: "/services/cac-registration",
     oldHref: "/cac-registration/",
     features: ["Business Name Registration", "Private Limited (Ltd)", "Public Limited (PLC)", "NGO / Trustees", "Post-Incorporation", "TIN & Tax Compliance"],
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
+    image: "/images/divisions/cac-registration.svg",
   },
 ];
 
-export const STATS = [
-  { number: "7",   suffix: "",  label: "Business Divisions",  description: "Across key sectors of the Nigerian economy" },
-  { number: "500", suffix: "+", label: "Clients Served",      description: "Individuals and organizations across Nigeria" },
-  { number: "5",   suffix: "+", label: "Years of Excellence", description: "Trusted, reliable, consistent service" },
-  { number: "100", suffix: "%", label: "Licensed & Regulated", description: "Fully registered with CAC and regulated" },
-];
+export const STATS = [{number:"7",suffix:"",label:"Business Divisions",description:"Across multiple sectors in Nigeria"},{number:"5",suffix:"",label:"Core Values",description:"Accountability, nurturing, dependability, uniqueness and sustainability"}];
 
 export const VALUES = [
   {
@@ -167,26 +162,7 @@ export const WHY_REASONS = [
   { icon: "🏢", title: "7 Diversified Divisions",           body: "From finance to farming, oil & gas to real estate, CAC registration — one trusted partner for all your Nigerian business needs." },
 ];
 
-export const TESTIMONIALS = [
-  {
-    name: "Adebayo Okonkwo",
-    role: "Business Owner, Lagos",
-    body: "ANDUS processed my SME loan in less than 72 hours. No hidden fees, no stress. Their team genuinely cares about your success.",
-    rating: 5,
-  },
-  {
-    name: "Fatima Abdullahi",
-    role: "Entrepreneur, Ogun State",
-    body: "I registered my limited company through ANDUS and it was seamless. They handled everything professionally and kept me informed at every step.",
-    rating: 5,
-  },
-  {
-    name: "Emeka Eze",
-    role: "Factory Manager, Sagamu",
-    body: "We've been using ANDUS for diesel supply for two years. Reliable, competitive pricing, and they always deliver on time — even during scarcity.",
-    rating: 5,
-  },
-];
+export const TESTIMONIALS: {name:string;role:string;body:string;rating:number}[] = [];
 
 export const COMPANY_STORY = {
   founded: "Fully registered and licensed",

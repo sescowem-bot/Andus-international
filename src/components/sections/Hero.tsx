@@ -15,14 +15,14 @@ const fadeUp = (delay = 0) => ({
 const TRUST_PILLS = [
   { icon: Shield,     label: "Fully Registered & Licensed" },
   { icon: Award,      label: "CAC Certified"               },
-  { icon: Users,      label: "500+ Clients Served"         },
-  { icon: TrendingUp, label: "5+ Years Excellence"         },
+  { icon: Users,      label: "Seven business divisions"         },
+  { icon: TrendingUp, label: "Five core values"         },
 ];
 
 const CHECKLIST = [
   "Fast loan processing — decisions in 24–72 hrs",
   "No hidden fees — fully transparent terms",
-  "Licensed money lender operating across Nigeria",
+  "Ask our team to confirm application requirements",
   "Seven business divisions under one trusted roof",
 ];
 
@@ -43,14 +43,14 @@ export default function Hero() {
           <motion.div {...fadeUp(0.05)} className="mb-7">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-xs font-semibold text-green-700 font-mono tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-badge-blink" />
-              Licensed Financial Institution · Nigeria
+              ANDUS International · Nigeria
             </span>
           </motion.div>
 
           {/* Headline - CMS-aware via data-cms */}
           <motion.h1
             {...fadeUp(0.1)}
-            className="text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight text-slate-900 leading-[1.04] mb-6"
+            className="andus-entrance text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] font-extrabold tracking-tight text-slate-900 leading-[1.04] mb-6"
             data-cms="hero__heading"
           >
             Empowering{" "}

@@ -1,15 +1,4 @@
 import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "andusinternationalng.com" },
-    ],
-  },
-  experimental: {
-    // optimizeCss: true,
-  },
-};
-
-export default nextConfig;
+const headers=[{key:"X-Content-Type-Options",value:"nosniff"},{key:"Referrer-Policy",value:"strict-origin-when-cross-origin"},{key:"X-Frame-Options",value:"DENY"},{key:"Permissions-Policy",value:"camera=(), microphone=(), geolocation=()"},{key:"Strict-Transport-Security",value:"max-age=31536000"}];
+const old=[["/about-us","/about"],["/contact-us","/contact"],["/our-services","/services"],["/financial-services","/services/financial-services"],["/oil-gas","/services/oil-gas"],["/real-estate","/services/real-estate"],["/farming-livestock","/services/agriculture"],["/automobile-logistics","/services/automobile-logistics"],["/general-contractors","/services/general-contracting"],["/business-registration","/services/cac-registration"],["/cac-registration","/services/cac-registration"],["/fixed-deposit-investment","/investment"],["/our-projects","/projects"]];
+const nextConfig:NextConfig={reactStrictMode:true,poweredByHeader:false,productionBrowserSourceMaps:false,images:{remotePatterns:[{protocol:"https",hostname:"images.unsplash.com"},{protocol:"https",hostname:"i.ytimg.com"}]},async headers(){return [{source:"/(.*)",headers},{source:"/api/:path*",headers:[{key:"Cache-Control",value:"private, no-store, max-age=0"},{key:"X-Robots-Tag",value:"noindex, nofollow"}]}]},async redirects(){return old.map(([source,destination])=>({source,destination,permanent:true}))}};export default nextConfig;

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ANDUS International Nigeria",
-    description: "Licensed, multi-sector business group empowering Nigerians across seven divisions.",
+    description: "Multi-sector business group supporting customers across seven divisions.",
     images: ["/og-image.png"],
   },
   robots: {
