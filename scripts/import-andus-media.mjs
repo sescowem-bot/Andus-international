@@ -21,10 +21,10 @@ for(const [name,url] of entries){
  const host=new URL(url).hostname;
  if(!["andusinternationalng.com","images.unsplash.com"].includes(host))throw new Error("Unexpected asset source");
  let response;
- for(let attempt=0;attempt<3;attempt++){try{response=await fetch(url,{signal:AbortSignal.timeout(18000)});if(response.ok)break;}catch(e){if(attempt===2)throw e;}await new Promise(r=>setTimeout(r,500*(attempt+1)));}
- if(!response?.ok)throw new Error(name+" returned HTTP "+response?.status);
- if(!/^image\/(png|jpeg|webp|avif)/.test(response.headers.get("content-type")||""))throw new Error("Invalid image type: "+name);
- const original=Buffer.from(await response.arrayBuffer());
+ for(let attempt=0;attempt<3;attempt++){try{response=await fetch(url,{signal:AbortSignal.timeout(18000)});if(response.ok)break;}catch(e){if(attempt===2&&!name.startsWith("divisions/"))throw e;}await new Promise(r=>setTimeout(r,500*(attempt+1)));}
+ if(!response?.ok&&!name.startsWith("divisions/"))throw new Error(name+" returned HTTP "+response?.status);
+ if(response?.ok&&!/^image\/(png|jpeg|webp|avif)/.test(response.headers.get("content-type")||""))throw new Error("Invalid image type: "+name);
+ const original=response?.ok?Buffer.from(await response.arrayBuffer()):await fs.readFile("public/images/divisions/"+name.split("/")[1]+".svg");
  if(original.length<2000||original.length>8000000)throw new Error("Invalid source image size: "+name);
  const info=await sharp(original,{limitInputPixels:35000000}).metadata();
  if((info.width??0)<300||(info.height??0)<200)throw new Error("Invalid source dimensions: "+name);
