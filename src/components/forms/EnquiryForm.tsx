@@ -14,7 +14,7 @@ const options={
 const labels={contact:"Send an enquiry",loan:"Loan enquiry",cac:"Business registration enquiry",investment:"Investment enquiry"};
 export default function EnquiryForm({variant="contact"}:{variant?:Variant}){
 const [data,setData]=useState<Data>({firstName:"",lastName:"",email:"",phone:"",service:"",message:"",kind:"",proposedName:"",proposedName2:"",amount:"",tenor:""});
-const [status,setStatus]=useState<"idle"|"sending"|"sent"|"error">("idle"),[error,setError]=useState(""),[reference,setReference]=useState("");
+const [status,setStatus]=useState<"idle"|"sending"|"sent"|"error">("idle"),[error,setError]=useState(""),[reference,setReference]=useState(""),[acknowledged,setAcknowledged]=useState(false);
 const put=(k:keyof Data,v:string)=>setData(d=>({...d,[k]:v}));
 useEffect(()=>{if(variant==="contact"){const category=new URLSearchParams(window.location.search).get("service");if(category)setData(d=>({...d,service:category}));}},[variant]);
 const waText=useMemo(()=>{const l=["Hello ANDUS International, I would like to make a "+labels[variant].toLowerCase()+".",data.firstName&&"Name: "+data.firstName+" "+data.lastName,data.phone&&"Phone: "+data.phone,data.kind&&"Service type: "+data.kind,data.proposedName&&"Proposed business name: "+data.proposedName];return l.filter(Boolean).join("\n");},[variant,data.firstName,data.lastName,data.phone,data.kind,data.proposedName]);
@@ -23,6 +23,7 @@ function submit(e:FormEvent){e.preventDefault();void run();}
 async function run(){
 setError("");
 if(!data.firstName.trim()||!data.lastName.trim()||!data.phone.trim()||!data.email.trim()||!data.message.trim()){setError("Complete the required fields before sending.");return;}
+if(!acknowledged){setError("Please read and acknowledge the privacy notice.");return;}
 if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){setError("Please enter a valid email address.");return;}
 if(data.phone.replace(/\D/g,"").length<10){setError("Please enter a valid phone number.");return;}
 if(variant!=="contact"&&!data.kind){setError("Choose an enquiry type.");return;}
@@ -30,7 +31,7 @@ const service=variant==="contact"?(data.service||"General enquiry"):(variant==="
 setStatus("sending");
 try{
  const res=await fetch("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
-   kind:variant,firstName:data.firstName,lastName:data.lastName,email:data.email,phone:data.phone,service,message:data.message,
+   kind:variant,firstName:data.firstName,lastName:data.lastName,email:data.email,phone:data.phone,service,message:data.message,privacyAcknowledged:acknowledged,
    proposedName:variant==="cac"?data.proposedName:"",proposedName2:variant==="cac"?data.proposedName2:"",
    amount:variant==="loan"?data.amount:"",tenor:data.tenor
  })});
