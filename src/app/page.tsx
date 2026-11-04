@@ -1,30 +1,3 @@
-import type { Metadata } from "next";
-import Hero          from "@/components/sections/Hero";
-import StatsBand     from "@/components/sections/StatsBand";
-import AboutTeaser   from "@/components/sections/AboutTeaser";
-import ServicesGrid  from "@/components/sections/ServicesGrid";
-import ValuesSection from "@/components/sections/ValuesSection";
-import WhyAndus      from "@/components/sections/WhyAndus";
-import Testimonials  from "@/components/sections/Testimonials";
-import CTASection    from "@/components/sections/CTASection";
-
-export const metadata: Metadata = {
-  title: "ANDUS International Nigeria | Empowering Lives, Transforming Communities",
-  description:
-    "Licensed Nigerian business group offering financial services, oil & gas supply, real estate, automobile logistics, agriculture, general contracting, and CAC registration. Apply for a loan today.",
-};
-
-export default function HomePage() {
-  return (
-    <>
-      <Hero />
-      <StatsBand />
-      <AboutTeaser />
-      <ServicesGrid />
-      <ValuesSection />
-      <WhyAndus />
-      <Testimonials />
-      <CTASection />
-    </>
-  );
-}
+import type {Metadata} from "next";import Link from "next/link";import {ArrowUpRight,CheckCircle2} from "lucide-react";import Hero from "@/components/sections/Hero";import ServicesGrid from "@/components/sections/ServicesGrid";import MediaShowcase from "@/components/sections/MediaShowcase";import Reveal from "@/components/ui/Reveal";import {VALUES} from "@/lib/data";
+export const metadata:Metadata={title:"ANDUS International Nigeria | Empowering Lives, Transforming Communities",description:"Seven specialist divisions in finance, energy, real estate, logistics, farming, contracting and business registration."};
+export default function HomePage(){return <><Hero/><ServicesGrid/><section className="bg-white py-20 sm:py-28" aria-labelledby="values-title"><div className="container-xl grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20"><Reveal><p className="text-xs font-bold uppercase tracking-[.22em] text-[#338B2E]">Our purpose</p><h2 id="values-title" className="mt-4 text-4xl font-bold leading-tight tracking-tight text-[#083F2C] sm:text-5xl">A company built on lasting values.</h2><p className="mt-6 text-base leading-8 text-[#557362]">ANDUS brings together complementary services for individuals and organisations. Our five guiding principles shape how we work with every client and community.</p><Link href="/about" className="mt-7 inline-flex items-center gap-2 border-b-2 border-[#338B2E] pb-2 font-bold text-[#005C38]">Our story <ArrowUpRight size={18}/></Link></Reveal><div className="grid gap-3 sm:grid-cols-2">{VALUES.map((v,i)=><Reveal key={v.word} delay={Math.min(i,4)*.04}><article className="h-full rounded-2xl border border-[#E1EEE3] bg-[#F6FBF7] p-6"><span className="text-3xl font-extrabold text-[#338B2E]">{v.letter}</span><h3 className="mt-4 text-xl font-bold text-[#083F2C]">{v.word}</h3><p className="mt-2 text-sm leading-7 text-[#557362]">{v.description}</p></article></Reveal>)}</div></div></section><MediaShowcase limit={3}/><section className="bg-white py-20 sm:py-28"><div className="container-xl"><div className="relative overflow-hidden rounded-[24px] bg-[#005C38] px-9 py-14 text-white sm:px-16 sm:py-20"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#B8EAAA]">Next steps</p><h2 className="mt-5 max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">Tell us what you're working towards.</h2><p className="mt-6 max-w-xl leading-8 text-white/80">Choose a division or contact the ANDUS team to discuss available services and the right next step.</p><Link href="/contact" className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-7 py-4 font-bold text-[#005C38]">Speak with us <ArrowUpRight size={18}/></Link><div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full border-[60px] border-white/5"/></div></div></section></>}
