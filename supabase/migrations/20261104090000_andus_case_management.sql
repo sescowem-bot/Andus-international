@@ -18,6 +18,8 @@ create table if not exists public.andus_applications (
   service text not null check (char_length(service) between 2 and 130),
   message text not null check (char_length(message) between 5 and 3000),
   details jsonb not null default '{}'::jsonb check (jsonb_typeof(details) = 'object'),
+  privacy_acknowledged_at timestamptz not null default now(),
+  privacy_notice_version text not null default '2026-11',
   status text not null default 'new' check (status in ('new','in_review','awaiting_customer','approved','rejected','completed')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
