@@ -1,55 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
-
-export const dynamic = "force-dynamic";
-
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { firstName, lastName, email, phone, service, message } = body;
-
-    if (!firstName || !message) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
-    }
-
-    // Use Resend only when API key is present (runtime, not build time)
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.warn("RESEND_API_KEY not set — email not sent");
-      return NextResponse.json({ success: true, dev: true });
-    }
-
-    const { Resend } = await import("resend");
-    const resend = new Resend(apiKey);
-
-    await resend.emails.send({
-      from: "ANDUS Website <noreply@andusinternationalng.com>",
-      to: [process.env.CONTACT_EMAIL ?? "info@andusinternationalng.com"],
-      replyTo: email,
-      subject: `New Contact Enquiry — ${service || "General"} — ${firstName} ${lastName}`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-          <div style="background:#0C6B37;padding:24px;border-radius:8px 8px 0 0">
-            <h2 style="color:white;margin:0">New Contact Enquiry</h2>
-            <p style="color:rgba(255,255,255,0.7);margin:4px 0 0">ANDUS International Website</p>
-          </div>
-          <div style="background:#f8f9fa;padding:24px;border:1px solid #e9ecef;border-radius:0 0 8px 8px">
-            <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#6c757d;font-size:13px;width:140px">Name</td><td style="padding:8px 0;font-weight:600">${firstName} ${lastName}</td></tr>
-              <tr><td style="padding:8px 0;color:#6c757d;font-size:13px">Email</td><td style="padding:8px 0"><a href="mailto:${email}">${email}</a></td></tr>
-              <tr><td style="padding:8px 0;color:#6c757d;font-size:13px">Phone</td><td style="padding:8px 0">${phone || "Not provided"}</td></tr>
-              <tr><td style="padding:8px 0;color:#6c757d;font-size:13px">Service</td><td style="padding:8px 0">${service || "General Enquiry"}</td></tr>
-            </table>
-            <hr style="margin:16px 0;border:none;border-top:1px solid #dee2e6"/>
-            <p style="color:#6c757d;font-size:13px;margin:0 0 8px">Message</p>
-            <p style="margin:0;white-space:pre-wrap">${message}</p>
-          </div>
-        </div>
-      `,
-    });
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    console.error("Contact form error:", error);
-    return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
-  }
+import {NextRequest,NextResponse} from "next/server";
+export const dynamic="force-dynamic";
+const fail=(error:string,status:number)=>NextResponse.json({success:false,error},{status,headers:{"Cache-Control":"no-store"}});
+const escapeHTML=(s:string)=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]||c));
+export async function POST(req:NextRequest){
+ if(req.headers.get("content-type")?.split(";")[0]!=="application/json")return fail("Invalid content type",415);
+ const origin=req.headers.get("origin");
+ if(origin&&origin!==new URL(req.url).origin&&origin!==process.env.NEXT_PUBLIC_SITE_URL)return fail("Invalid origin",403);
+ let data:Record<string,unknown>;try{data=await req.json()}catch{return fail("Invalid data",400)}
+ if(!data||typeof data!=="object")return fail("Invalid form",400);
+ const get=(k:string,n:number)=>typeof data[k]==="string"?(data[k] as string).trim().slice(0,n):"";
+ const first=get("firstName",80),last=get("lastName",80),email=get("email",180),phone=get("phone",40),service=get("service",90),message=get("message",3000);
+ if(!first||!message||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return fail("Name, valid email and message are required",400);
+ if(get("website",50))return fail("Request rejected",403);
+ const key=process.env.RESEND_API_KEY,to=process.env.CONTACT_EMAIL,from=process.env.ANDUS_SENDER_EMAIL;
+ if(!key||!to||!from)return fail("Enquiry form is temporarily unavailable; please email or call ANDUS.",503);
+ const safe=(x:string)=>escapeHTML(x).replace(/\n/g,"<br/>");
+ const html="<h2>ANDUS enquiry</h2><p>Name: "+safe(first+" "+last)+"</p><p>Email: "+safe(email)+"</p><p>Phone: "+safe(phone)+"</p><p>Service: "+safe(service)+"</p><p>Message: "+safe(message)+"</p>";
+ try{const r=await fetch("https://api.resend.com/emails",{method:"POST",headers:{"Authorization":"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify({from,to:[to],reply_to:email,subject:"ANDUS website enquiry",html}),cache:"no-store",signal:AbortSignal.timeout(9000)});const result=await r.json().catch(()=>({}));if(!r.ok||!result.id)return fail("Message could not be delivered. Please contact ANDUS directly.",502);return NextResponse.json({success:true},{headers:{"Cache-Control":"no-store"}})}catch{return fail("Contact service is unavailable",503)}
 }

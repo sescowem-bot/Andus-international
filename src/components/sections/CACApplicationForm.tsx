@@ -333,13 +333,13 @@ export default function CACApplicationForm() {
         fd.append("llp.natureOfBusiness",gv("llp_nature"));
       }
 
-      const res = await fetch(`${SITE.api.cac}/cac/submit`, { method: "POST", body: fd });
+      const res = await fetch("/api/applications/cac", { method: "POST", body: fd });
       const data = await res.json();
-      if (data.success) {
-        setRefNum(data.referenceNumber || "ANDUS-CAC-001");
+      if (res.ok && data.success && data.referenceNumber) {
+        setRefNum(data.referenceNumber || "");
         setStep(7); // success state
       } else {
-        setError(data.message || "Submission failed. Please try again.");
+        setError(data.message || data.error || "Secure application submissions are not yet available. Please contact the team.");
       }
     } catch {
       setError("Network error. Please check your connection and try again, or contact us via WhatsApp.");

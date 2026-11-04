@@ -11,23 +11,23 @@ import { STATS, COMPANY_STORY, SITE } from "@/lib/data";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About ANDUS International | Fully Registered & Licensed Business Group",
+  title: "About ANDUS International | ANDUS International Business Group",
   description:
     "ANDUS International Nigeria Limited — a fully registered and licensed, multi-sector company committed to empowering lives and transforming communities across Nigeria through accessible, integrity-driven services.",
 };
 
 const TIMELINE = [
-  { year: "2019", event: "ANDUS International Nigeria Limited founded and registered with CAC in Ogun State. Licensed as a money lender." },
+  { year: "2019", event: "ANDUS International Nigeria Limited founded and registered with CAC in Ogun State. Operating across multiple business sectors." },
   { year: "2020", event: "Launched Financial Services division — providing consumer loans, SME financing, and LPO funding across Southwest Nigeria." },
   { year: "2021", event: "Expanded into Oil & Gas petroleum supply and Real Estate & Construction divisions." },
   { year: "2022", event: "Automobile & Logistics and Farming & Livestock divisions launched, serving diverse clients across Nigeria." },
   { year: "2023", event: "General Contracting and CAC Registration divisions added — completing our seven-division business model." },
-  { year: "2024", event: "Surpassed 500+ client milestone across all divisions, cementing ANDUS as a trusted name in Nigerian business." },
+  { year: "2024", event: "Surpassed 7 client milestone across all divisions, cementing ANDUS as a trusted name in Nigerian business." },
   { year: "2025+", event: "Scaling operations, deepening community impact, and expanding geographic reach across Nigeria." },
 ];
 
 const WHY_CHOOSE = [
-  { title: "Fully Registered & Licensed",   body: "Fully registered with CAC and licensed as a money lender — operate with complete legal confidence.", icon: "🏛" },
+  { title: "ANDUS International",   body: "Fully registered with CAC and operating across multiple business sectors — operate with complete legal confidence.", icon: "🏛" },
   { title: "Client-First Always",            body: "Every product and service is designed around your real needs — accessible, transparent, and community-focused.", icon: "👥" },
   { title: "Fast & Reliable",               body: "We respond quickly, process efficiently, and deliver results — no unnecessary delays or hidden bureaucracy.", icon: "⚡" },
   { title: "Transparent Pricing",           body: "No hidden fees, no surprises. We quote clearly and deliver exactly what we promise at the price agreed.", icon: "💰" },
@@ -51,7 +51,7 @@ export default function AboutPage() {
       <div className="bg-white border-b border-slate-100 py-4">
         <div className="container-xl">
           <div className="flex flex-wrap gap-3 justify-center">
-            {["Fully Registered & Licensed", "Licensed Money Lender", "7 Business Divisions", "CAC Certified", "Ogun State, Nigeria"].map((pill) => (
+            {["ANDUS International", "Financial Services", "7 Business Divisions", "CAC Certified", "Ogun State, Nigeria"].map((pill) => (
               <span key={pill} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-xs font-semibold text-green-700 font-mono">
                 <CheckCircle size={11} className="text-green-600" /> {pill}
               </span>
@@ -85,7 +85,7 @@ export default function AboutPage() {
                   </strong>
                 </p>
                 <p className="text-slate-500 leading-relaxed mb-8">
-                  Licensed as a money lender and operating across seven key sectors, ANDUS delivers
+                  Operating across multiple business sectors and operating across seven key sectors, ANDUS delivers
                   trusted services with integrity at the centre of everything we do — from financial
                   services to oil & gas, real estate, automobile logistics, farming, general
                   contracting, and CAC registration.
@@ -116,7 +116,7 @@ export default function AboutPage() {
                   {/* Badge overlay */}
                   <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur-sm text-white rounded-xl px-4 py-3 border-l-[3px] border-green-500">
                     <div className="font-mono text-[10px] text-green-400 tracking-widest uppercase mb-1">Est. Nigeria</div>
-                    <div className="text-sm font-medium">Fully Registered & Licensed</div>
+                    <div className="text-sm font-medium">ANDUS International</div>
                   </div>
                 </div>
               </Reveal>
