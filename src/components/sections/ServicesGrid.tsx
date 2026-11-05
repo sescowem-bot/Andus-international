@@ -1,127 +1,46 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { SERVICES } from "@/lib/data";
-import Reveal from "@/components/ui/Reveal";
-import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerChildren";
-import { ArrowRight } from "lucide-react";
+import { Entrance, HoverLift } from "@/components/ui/PremiumMotion";
 
 export default function ServicesGrid() {
   return (
-    <section className="section bg-slate-50" id="services">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_100%,rgba(0,112,60,0.05)_0%,transparent_70%)] pointer-events-none" />
-
-      <div className="container-xl relative">
-        <Reveal className="text-center mb-14">
-          <span className="eyebrow-pill mb-5 inline-flex">What We Offer</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-4">
-            Seven Divisions.{" "}
-            <span className="brand-text">One</span>{" "}
-            <span className="text-green-700">Trusted Partner.</span>
-          </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            From personal finance to petroleum supply, real estate to CAC registration —
-            ANDUS delivers comprehensive solutions built for Nigeria&apos;s growth.
-          </p>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-
-          {/* Featured card — Financial Services spans 2 cols */}
-          <Reveal className="md:col-span-2">
-            <Link href={SERVICES[0].href} className="block h-full group">
-              <div className="relative h-full rounded-2xl overflow-hidden bg-gradient-to-br from-green-700 to-green-900 min-h-[300px] transition-all duration-300 group-hover:shadow-brand-lg group-hover:-translate-y-1">
-                {/* BG decoration */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
-
-                {/* Dot pattern */}
-                <div className="absolute inset-0 opacity-[0.07]"
-                  style={{backgroundImage:"radial-gradient(circle,rgba(255,255,255,0.8) 1px,transparent 1px)",backgroundSize:"24px 24px"}} />
-
-                <div className="relative z-10 p-8 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-7">
-                    <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center text-2xl">
-                      {SERVICES[0].icon}
-                    </div>
-                    <span className="font-mono text-xs text-white/40">{SERVICES[0].number}</span>
+    <section id="services" aria-labelledby="services-heading" className="scroll-mt-24 bg-white py-11 sm:py-14">
+      <div className="container-xl">
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <Entrance>
+            <p className="text-[11px] font-extrabold uppercase tracking-[.22em] text-[#338B2E]">Our capabilities / 01 — 07</p>
+            <h2 id="services-heading" className="mt-3 text-[clamp(2.25rem,3.3vw,3.3rem)] leading-[1.13] tracking-[-.035em] text-[#103D2B]" style={{fontFamily:'Fraunces, Georgia, serif',fontWeight:600}}>
+              Seven divisions. <span className="text-[#338B2E]">One purpose.</span>
+            </h2>
+          </Entrance>
+          <Entrance delay={0.1}>
+            <p className="max-w-[380px] text-[13px] leading-[1.8] text-[#587361]">From capital and energy to property, agriculture and business registration. Explore the full range of ANDUS services.</p>
+          </Entrance>
+        </div>
+        <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((service, index) => (
+            <Entrance key={service.id} delay={Math.min(index, 5) * 0.045} className="h-full">
+              <HoverLift className="h-full">
+                <Link href={service.href} className="group block h-full overflow-hidden rounded-[16px] border border-[#E0EBE3] bg-white transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(3,54,27,.10)]">
+                  <div className="relative h-[187px] overflow-hidden bg-[#DDE9DF]">
+                    <Image src={service.image} alt={`${service.title} at ANDUS International`} fill sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.055]" />
+                    <span className="absolute right-4 top-4 rounded-full border border-white/50 bg-[#053621]/75 px-3 py-1.5 text-[11px] font-bold tracking-[.08em] text-white backdrop-blur-sm">{String(index + 1).padStart(2, "0")} / 07</span>
                   </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-3 leading-snug">
-                    {SERVICES[0].title}
-                  </h3>
-                  <p className="text-white/75 text-sm leading-relaxed mb-6 flex-1">
-                    {SERVICES[0].description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {SERVICES[0].features.slice(0, 3).map((f) => (
-                      <span key={f} className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-white/85 font-medium">
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-2 text-sm font-semibold text-green-300 group-hover:text-white transition-colors">
-                    Explore Service
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-          </Reveal>
-
-          {/* Remaining 6 services */}
-          <StaggerContainer className="contents" stagger={0.06}>
-            {SERVICES.slice(1).map((service) => (
-              <StaggerItem key={service.id}>
-                <Link href={service.href} className="block h-full group">
-                  <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden h-full transition-all duration-300 group-hover:border-green-200 group-hover:shadow-card-hover group-hover:-translate-y-1 min-h-[220px] flex flex-col">
-                    {/* Real image */}
-                    <div className="relative h-36 overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                      {/* Number badge */}
-                      <span className="absolute top-2.5 right-3 font-mono text-xs text-white/60 font-bold">
-                        {service.number}
-                      </span>
-                      {/* Icon */}
-                      <div className="absolute bottom-2.5 left-3 w-8 h-8 rounded-lg bg-white/15 backdrop-blur-sm flex items-center justify-center text-base">
-                        {service.icon}
-                      </div>
+                  <div className="px-5 pb-5 pt-4">
+                    <h3 className="text-[19px] font-bold leading-tight text-[#103E2B]">{service.title}</h3>
+                    <p className="mt-2 min-h-[49px] text-[13px] leading-[1.8] text-[#587260]">{service.short}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {service.features.slice(0, 2).map(feature => <span key={feature} className="rounded-full border border-[#DDEBE0] bg-[#F7FAF7] px-2.5 py-1 text-[10px] font-semibold text-[#56745E]">{feature}</span>)}
                     </div>
-
-                    <div className="p-5 flex flex-col flex-1">
-                      <h3 className="font-bold text-slate-900 text-base mb-2 leading-snug group-hover:text-green-700 transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-slate-500 text-xs leading-relaxed mb-4 flex-1 line-clamp-2">
-                        {service.short}
-                      </p>
-                      <div className="flex items-center gap-1.5 text-green-700 text-xs font-semibold mt-auto">
-                        Learn More
-                        <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
-                      </div>
-                    </div>
+                    <div className="mt-4 flex items-center justify-between border-t border-[#EDF2ED] pt-3 text-[12px] font-extrabold text-[#005C38]"><span>Explore division</span><ArrowUpRight size={18} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
                   </div>
                 </Link>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+              </HoverLift>
+            </Entrance>
+          ))}
         </div>
-
-        <Reveal delay={0.2} className="mt-12 text-center">
-          <Link href="/services" className="btn-outline group">
-            View All Services
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </Reveal>
       </div>
     </section>
   );

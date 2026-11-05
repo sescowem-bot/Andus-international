@@ -3,7 +3,7 @@ import Reveal from "@/components/ui/Reveal";
 import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerChildren";
 import { Star } from "lucide-react";
 
-export default function Testimonials() {
+export default function Testimonials() { if (TESTIMONIALS.length===0) return null;
   return (
     <section className="section bg-white" id="testimonials">
       <div className="container-xl">

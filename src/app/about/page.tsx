@@ -1,284 +1,120 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "@/components/ui/PageHeader";
-import ValuesSection from "@/components/sections/ValuesSection";
-import CTASection from "@/components/sections/CTASection";
-import Reveal from "@/components/ui/Reveal";
-import { StaggerContainer, StaggerItem } from "@/components/ui/StaggerChildren";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import { STATS, COMPANY_STORY, SITE } from "@/lib/data";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { SITE, VALUES, COMPANY_STORY } from "@/lib/data";
+import { Entrance, HoverLift, ImageDrift } from "@/components/ui/PremiumMotion";
 
 export const metadata: Metadata = {
-  title: "About ANDUS International | Fully Registered & Licensed Business Group",
-  description:
-    "ANDUS International Nigeria Limited — a fully registered and licensed, multi-sector company committed to empowering lives and transforming communities across Nigeria through accessible, integrity-driven services.",
+  title: "About ANDUS International",
+  description: "Learn about ANDUS International Nigeria Limited, our mission, vision and A.N.D.U.S core values.",
 };
-
-const TIMELINE = [
-  { year: "2019", event: "ANDUS International Nigeria Limited founded and registered with CAC in Ogun State. Licensed as a money lender." },
-  { year: "2020", event: "Launched Financial Services division — providing consumer loans, SME financing, and LPO funding across Southwest Nigeria." },
-  { year: "2021", event: "Expanded into Oil & Gas petroleum supply and Real Estate & Construction divisions." },
-  { year: "2022", event: "Automobile & Logistics and Farming & Livestock divisions launched, serving diverse clients across Nigeria." },
-  { year: "2023", event: "General Contracting and CAC Registration divisions added — completing our seven-division business model." },
-  { year: "2024", event: "Surpassed 500+ client milestone across all divisions, cementing ANDUS as a trusted name in Nigerian business." },
-  { year: "2025+", event: "Scaling operations, deepening community impact, and expanding geographic reach across Nigeria." },
-];
-
-const WHY_CHOOSE = [
-  { title: "Fully Registered & Licensed",   body: "Fully registered with CAC and licensed as a money lender — operate with complete legal confidence.", icon: "🏛" },
-  { title: "Client-First Always",            body: "Every product and service is designed around your real needs — accessible, transparent, and community-focused.", icon: "👥" },
-  { title: "Fast & Reliable",               body: "We respond quickly, process efficiently, and deliver results — no unnecessary delays or hidden bureaucracy.", icon: "⚡" },
-  { title: "Transparent Pricing",           body: "No hidden fees, no surprises. We quote clearly and deliver exactly what we promise at the price agreed.", icon: "💰" },
-  { title: "Community Impact",              body: "Rooted in Ogun State, we invest in the communities we serve — our success is measured by the lives we transform.", icon: "📍" },
-  { title: "7 Diversified Divisions",       body: "From finance to farming, oil & gas to real estate — one trusted partner for all your Nigerian business needs.", icon: "🏢" },
-];
 
 export default function AboutPage() {
   return (
-    <>
-      <PageHeader
-        label="Our Story · Our Mission · Our Values"
-        title={
-          <>About <span className="brand-text">ANDUS</span><br />International</>
-        }
-        description="A fully registered and licensed company, committed to empowering lives and transforming communities across Nigeria through innovative financial services and diversified business operations."
-        size="lg"
-      />
+    <main className="bg-white">
+      <header className="border-b border-[#E3EEE5] bg-[#F7FAF6] pt-[112px]">
+        <div className="container-xl grid gap-7 pb-9 pt-4 lg:grid-cols-[1fr_.7fr] lg:items-end">
+          <div>
+            <Entrance>
+              <p className="text-[11px] font-extrabold uppercase tracking-[.23em] text-[#338B2E]">The ANDUS story / About us</p>
+              <h1 className="mt-3 text-[clamp(2.7rem,4.5vw,4.3rem)] leading-[1.13] tracking-[-.045em] text-[#103C2B]" style={{fontFamily:'Fraunces, Georgia, serif',fontWeight:600}}>
+                Built on integrity.<br /><span className="text-[#338B2E]">Driven by purpose.</span>
+              </h1>
+            </Entrance>
+          </div>
+          <Entrance delay={0.1}>
+            <p className="max-w-[500px] text-[15px] leading-[1.8] text-[#55715F]">
+              Empowering individuals, businesses and communities in Nigeria through a diversified range of services and a promise of dependable relationships.
+            </p>
+          </Entrance>
+        </div>
+      </header>
 
-      {/* Trust pills */}
-      <div className="bg-white border-b border-slate-100 py-4">
+      <section className="py-9 sm:py-12" aria-labelledby="andus-story-title">
+        <div className="container-xl grid items-start gap-7 lg:grid-cols-[.9fr_1.1fr] lg:gap-10">
+          <Entrance className="relative">
+            <ImageDrift className="relative h-[355px] overflow-hidden rounded-[18px] bg-[#E6EFE7] sm:h-[465px] lg:h-[555px]">
+              <Image
+                src="/images/company/about.webp"
+                alt="Professional team member at work, from the original ANDUS website"
+                fill
+                priority
+                sizes="(max-width:1024px) 100vw, 45vw"
+                className="object-cover object-center"
+              />
+            </ImageDrift>
+            <div className="absolute -bottom-3 right-4 rounded-xl border border-[#A4D2AC] bg-[#063D2B] px-5 py-4 text-white shadow-lg sm:-right-3">
+              <span className="block text-[11px] font-bold uppercase tracking-[.24em] text-[#BDE8B3]">A.N.D.U.S.</span>
+              <span className="mt-1 block text-[12px] font-semibold">Our identity</span>
+            </div>
+          </Entrance>
+
+          <div className="min-w-0 lg:py-1">
+            <Entrance delay={0.05}>
+              <p className="text-[11px] font-extrabold uppercase tracking-[.21em] text-[#338B2E]">Established in Nigeria</p>
+              <h2 id="andus-story-title" className="mt-3 max-w-xl text-[clamp(1.85rem,2.7vw,2.8rem)] leading-[1.22] tracking-[-.035em] text-[#0D3B29]" style={{fontFamily:'Fraunces, Georgia, serif',fontWeight:600}}>
+                A business group with a binding pledge.
+              </h2>
+              <p className="mt-4 text-[14px] leading-[1.85] text-[#4F6B59] sm:text-[15px]">{COMPANY_STORY.story}</p>
+              <p className="mt-3 text-[14px] leading-[1.85] text-[#4F6B59]">The name ANDUS reflects five guiding principles: <strong className="text-[#123F2B]">Accountability, Nurturing, Dependability, Uniqueness and Sustainability.</strong></p>
+            </Entrance>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <Entrance delay={0.12}>
+                <article className="h-full rounded-[15px] border-t-[3px] border-[#005C38] bg-[#EFF7F1] p-5">
+                  <h3 className="text-[20px] font-bold text-[#005C38]" style={{fontFamily:'Fraunces, Georgia, serif'}}>Our Vision</h3>
+                  <p className="mt-2 text-[13px] leading-[1.78] text-[#476954]">{COMPANY_STORY.vision}</p>
+                </article>
+              </Entrance>
+              <Entrance delay={0.17}>
+                <article className="h-full rounded-[15px] border-t-[3px] border-[#338B2E] bg-[#F4F8EC] p-5">
+                  <h3 className="text-[20px] font-bold text-[#237A36]" style={{fontFamily:'Fraunces, Georgia, serif'}}>Our Mission</h3>
+                  <p className="mt-2 text-[13px] leading-[1.78] text-[#476954]">{COMPANY_STORY.mission}</p>
+                </article>
+              </Entrance>
+            </div>
+            <Entrance delay={0.2}>
+              <Link href="/services" className="mt-6 inline-flex items-center gap-2 border-b-2 border-[#338B2E] pb-1.5 text-[13px] font-bold text-[#005C38] transition hover:gap-3">
+                Explore all seven divisions <ArrowUpRight size={17} />
+              </Link>
+            </Entrance>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#E2EDE4] bg-[#F7FAF7] py-10 sm:py-12" aria-labelledby="andus-values-title">
         <div className="container-xl">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {["Fully Registered & Licensed", "Licensed Money Lender", "7 Business Divisions", "CAC Certified", "Ogun State, Nigeria"].map((pill) => (
-              <span key={pill} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-xs font-semibold text-green-700 font-mono">
-                <CheckCircle size={11} className="text-green-600" /> {pill}
-              </span>
+          <Entrance>
+            <div className="flex flex-wrap items-end justify-between gap-5">
+              <div>
+                <p className="text-[11px] font-extrabold uppercase tracking-[.22em] text-[#338B2E]">The A.N.D.U.S. Covenant</p>
+                <h2 id="andus-values-title" className="mt-2 text-3xl tracking-[-.03em] text-[#0D3C28] sm:text-[2.4rem]" style={{fontFamily:'Fraunces, Georgia, serif',fontWeight:600}}>Five letters. Five commitments.</h2>
+              </div>
+              <p className="max-w-[390px] text-[13px] leading-7 text-[#5A7560]">A guiding principle behind each decision, relationship and business division.</p>
+            </div>
+          </Entrance>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {VALUES.map((value, i) => (
+              <Entrance key={`${value.letter}-${i}`} delay={i * 0.06} className="h-full">
+                <HoverLift className="h-full">
+                  <article className="h-full rounded-xl border border-[#D9E8DD] bg-white px-5 py-5">
+                    <div className="flex items-center justify-between"><strong className="text-[37px] font-bold leading-none text-[#338B2E]" style={{fontFamily:'Fraunces, Georgia, serif'}}>{value.letter}</strong><CheckCircle2 size={17} className="text-[#88B897]" /></div>
+                    <h3 className="mt-4 text-[16px] font-bold text-[#173D2C]">{value.word}</h3>
+                    <p className="mt-2 text-[12.5px] leading-[1.75] text-[#587362]">{value.description}</p>
+                  </article>
+                </HoverLift>
+              </Entrance>
             ))}
           </div>
         </div>
-      </div>
-
-      {/* OUR STORY */}
-      <section className="section bg-white">
-        <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-16 xl:gap-24 items-center">
-            {/* Left: Copy */}
-            <div>
-              <Reveal>
-                <span className="eyebrow-pill mb-5 inline-flex">Our Story</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight leading-[1.1] mb-6">
-                  Built on <span className="brand-text">Integrity</span>{" "}
-                  & <span className="text-green-700">Service</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <p className="text-slate-500 leading-relaxed mb-5 text-[1.05rem]">
-                  {COMPANY_STORY.story}
-                </p>
-                <p className="text-slate-500 leading-relaxed mb-5">
-                  Our name is not just a brand — it is a binding pledge. Every letter represents a
-                  core value:{" "}
-                  <strong className="text-slate-800 font-semibold">
-                    Accountability, Nurturing, Dependability, Uniqueness, and Sustainability.
-                  </strong>
-                </p>
-                <p className="text-slate-500 leading-relaxed mb-8">
-                  Licensed as a money lender and operating across seven key sectors, ANDUS delivers
-                  trusted services with integrity at the centre of everything we do — from financial
-                  services to oil & gas, real estate, automobile logistics, farming, general
-                  contracting, and CAC registration.
-                </p>
-              </Reveal>
-              <Reveal delay={0.12} className="flex flex-wrap gap-3">
-                <Link href="/contact" className="btn-primary group">
-                  Get In Touch <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                </Link>
-                <Link href="/services" className="btn-ghost">
-                  Our Services
-                </Link>
-              </Reveal>
-            </div>
-
-            {/* Right: Real image + stats */}
-            <div>
-              <Reveal delay={0.1}>
-                <div className="relative rounded-2xl overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.12)] mb-5">
-                  <Image
-                    src={SITE.images.whoWeAre}
-                    alt="ANDUS International Nigeria — Who We Are"
-                    width={640}
-                    height={420}
-                    className="w-full h-[320px] md:h-[380px] object-cover"
-                    priority
-                  />
-                  {/* Badge overlay */}
-                  <div className="absolute bottom-4 left-4 bg-slate-900/90 backdrop-blur-sm text-white rounded-xl px-4 py-3 border-l-[3px] border-green-500">
-                    <div className="font-mono text-[10px] text-green-400 tracking-widest uppercase mb-1">Est. Nigeria</div>
-                    <div className="text-sm font-medium">Fully Registered & Licensed</div>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Stats */}
-              <Reveal delay={0.15}>
-                <div className="grid grid-cols-3 rounded-2xl overflow-hidden border border-slate-200 shadow-card">
-                  {STATS.slice(0, 3).map((stat, i) => (
-                    <div
-                      key={stat.label}
-                      className={`text-center py-6 px-4 ${i < 2 ? "border-r border-slate-200" : ""} hover:bg-green-50 transition-colors`}
-                    >
-                      <div className="text-3xl font-extrabold text-green-700 leading-none mb-1 tabular-nums">
-                        <AnimatedCounter target={parseInt(stat.number)} suffix={stat.suffix} />
-                      </div>
-                      <div className="font-mono text-[10px] text-slate-500 tracking-wider uppercase">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            </div>
-          </div>
+      </section>
+      <section className="py-9 sm:py-11">
+        <div className="container-xl flex flex-wrap items-center justify-between gap-5 rounded-[17px] bg-[#06452D] px-7 py-8 text-white sm:px-10">
+          <div><span className="text-[11px] font-bold uppercase tracking-[.2em] text-[#C1E7B8]">Next conversation</span><h2 className="mt-2 text-[26px] font-semibold" style={{fontFamily:'Fraunces, Georgia, serif'}}>Let’s build something meaningful.</h2><p className="mt-1 text-[13px] text-white/75">ANDUS International · {SITE.address}</p></div>
+          <Link href="/contact" className="group inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-bold text-[#005C38] transition hover:bg-[#E9F8EC]">Get in touch <ArrowUpRight size={17} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
         </div>
       </section>
-
-      {/* MISSION & VISION */}
-      <section className="section bg-slate-50">
-        <div className="container-xl">
-          <Reveal className="text-center mb-12">
-            <span className="eyebrow-pill mb-4 inline-flex">Mission & Vision</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              What Drives Us <span className="brand-text">Every Day</span>
-            </h2>
-            <p className="mt-4 text-slate-500 max-w-xl mx-auto">
-              Two clear purposes that guide every decision, every service, and every relationship at ANDUS International.
-            </p>
-          </Reveal>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Mission */}
-            <Reveal delay={0.05}>
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 h-full shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-2xl mb-5">🎯</div>
-                <div className="font-mono text-xs text-green-700 tracking-widest uppercase mb-3">Our Mission</div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Empowering People & Communities</h3>
-                <p className="text-slate-500 leading-relaxed">{COMPANY_STORY.mission}</p>
-              </div>
-            </Reveal>
-            {/* Vision */}
-            <Reveal delay={0.1}>
-              <div className="bg-gradient-to-br from-green-700 to-green-900 rounded-2xl p-8 h-full relative overflow-hidden shadow-[0_20px_48px_rgba(0,112,60,0.28)] hover:-translate-y-1 transition-all duration-300">
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/5 rounded-full" />
-                <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-white/5 rounded-full" />
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center text-2xl mb-5">👁</div>
-                  <div className="font-mono text-xs text-green-300 tracking-widest uppercase mb-3">Our Vision</div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Nigeria&apos;s Most Trusted Business Group</h3>
-                  <p className="text-white/80 leading-relaxed">{COMPANY_STORY.vision}</p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* VALUES */}
-      <ValuesSection />
-
-      {/* WHY CHOOSE ANDUS */}
-      <section className="section bg-slate-50" id="why-us">
-        <div className="container-xl">
-          <Reveal className="text-center mb-12">
-            <span className="eyebrow-pill mb-4 inline-flex">Why Choose Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              A Company You Can <span className="brand-text">Truly Trust</span>
-            </h2>
-            <p className="mt-4 text-slate-500 max-w-xl mx-auto">
-              We don&apos;t just promise excellence — we live it every day across all seven of our business divisions.
-            </p>
-          </Reveal>
-
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.06}>
-            {WHY_CHOOSE.map((item) => (
-              <StaggerItem key={item.title}>
-                <div className="bg-white rounded-2xl border border-slate-200 p-6 h-full group hover:border-green-200 hover:shadow-card transition-all duration-300">
-                  <div className="w-11 h-11 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center text-xl mb-4 group-hover:bg-green-100 group-hover:border-green-200 transition-colors">
-                    {item.icon}
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm mb-2 group-hover:text-green-700 transition-colors">{item.title}</h4>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* REAL IMAGES STRIP */}
-      <section className="bg-slate-50 pb-20">
-        <div className="container-xl">
-          <Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="md:col-span-2 rounded-2xl overflow-hidden h-52">
-                <Image
-                  src={SITE.images.about}
-                  alt="ANDUS International — Contact & Support"
-                  width={800}
-                  height={208}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="rounded-2xl overflow-hidden h-52">
-                <Image
-                  src={SITE.images.whoWeAre}
-                  alt="ANDUS International — Who We Are"
-                  width={400}
-                  height={208}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* TIMELINE */}
-      <section className="section bg-white" id="timeline">
-        <div className="container-xl">
-          <Reveal className="text-center mb-14">
-            <span className="eyebrow-pill mb-4 inline-flex">Our Journey</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-              The <span className="brand-text">ANDUS</span> Timeline
-            </h2>
-          </Reveal>
-
-          <div className="max-w-3xl mx-auto relative">
-            {/* Vertical line */}
-            <div className="absolute left-5 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-green-500 via-green-200 to-transparent" />
-
-            <div className="space-y-8">
-              {TIMELINE.map((item, i) => (
-                <Reveal key={item.year} delay={i * 0.06}>
-                  <div className={`relative flex gap-6 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-start`}>
-                    {/* Dot */}
-                    <div className="absolute left-5 md:left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-green-600 border-2 border-white shadow mt-2 shrink-0 z-10" />
-
-                    {/* Content */}
-                    <div className={`ml-12 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-10 md:text-right" : "md:pl-10"}`}>
-                      <div className="bg-white rounded-xl border border-slate-200 p-5 shadow-card hover:shadow-card-hover hover:border-green-200 transition-all duration-300">
-                        <div className="font-mono text-xs text-green-700 font-bold mb-2">{item.year}</div>
-                        <p className="text-slate-600 text-sm leading-relaxed">{item.event}</p>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
-    </>
+    </main>
   );
 }

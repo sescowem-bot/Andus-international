@@ -10,17 +10,17 @@ export const SITE = {
   socials: { linkedin: "#", twitter: "#", facebook: "#", instagram: "#" },
   // Real images from their server
   images: {
-    hero:    "https://andusinternationalng.com/wp-content/uploads/2026/03/about-image_n1dmfc.jpg",
-    about:   "https://andusinternationalng.com/wp-content/uploads/2026/04/Contact-us.jpeg",
-    whoWeAre:"https://andusinternationalng.com/wp-content/uploads/2026/04/Who-we-are.jpeg",
-    logo:    "https://andusinternationalng.com/wp-content/uploads/2026/02/cropped-logo-bTVtplgx-removebg-preview-94x76.png",
-    logoBig: "https://andusinternationalng.com/wp-content/uploads/2026/02/cropped-logo-bTVtplgx-removebg-preview.png",
+    hero:"/images/company/hero.webp",
+    about:"/images/company/contact.webp",
+    whoWeAre:"/images/company/about.webp",
+    logo:    "/brand/andus-original.webp",
+    logoBig: "/brand/andus-original.webp",
   },
   // Backend URLs
   api: {
-    cms:    "https://andus-backend-production.up.railway.app/api/cms/public/",
-    cac:    "https://andus-backend.onrender.com/api",
-    admin:  "https://andus-admin.vercel.app",
+    cms: "",
+    cac: "",
+    admin: "",
   },
 };
 
@@ -29,27 +29,27 @@ export const SERVICES = [
     id: "financial-services",
     number: "01",
     title: "Financial Services",
-    short: "Fast, flexible loans for individuals & businesses",
+    short: "Loan and business-finance enquiries",
     description:
-      "Fast, flexible loan products — consumer loans, SME financing, asset finance, LPO funding, and strategic financial consultation — designed to unlock opportunity for every Nigerian.",
+      "Enquiries for consumer loans, SME financing, asset finance, LPO funding and financial consultations, subject to eligibility and written terms.",
     icon: "💰",
     href: "/services/financial-services",
     oldHref: "/financial-services/",
     features: ["Consumer Loans", "SME Financing", "Asset Finance", "LPO Funding", "Financial Consultation"],
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85",
+    image: "/images/divisions/financial-services.webp",
   },
   {
     id: "oil-gas",
     number: "02",
     title: "Oil & Gas",
-    short: "Reliable petroleum supply across Nigeria",
+    short: "Petroleum supply and logistics enquiries",
     description:
-      "Dependable supply of diesel, petroleum, kerosene, LPG, and lubricants — ensuring homes, businesses, and industries across Nigeria never run dry.",
+      "Supply enquiries for diesel, petrol, kerosene, LPG and lubricants, including commercial delivery and logistics requirements.",
     icon: "⚡",
     href: "/services/oil-gas",
     oldHref: "/oil-gas/",
     features: ["Diesel Supply", "Petroleum Products", "Kerosene", "LPG", "Lubricants"],
-    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80",
+    image: "/images/divisions/oil-gas.webp",
   },
   {
     id: "real-estate",
@@ -57,12 +57,12 @@ export const SERVICES = [
     title: "Real Estate & Construction",
     short: "Properties built for lasting value",
     description:
-      "Residential and commercial property sales, strategic land acquisition, and premium construction — creating spaces that stand as testaments to quality craftsmanship.",
+      "Property, land acquisition, construction and renovation enquiries for residential and commercial customers.",
     icon: "🏛",
     href: "/services/real-estate",
     oldHref: "/real-estate/",
     features: ["Property Sales", "Land Acquisition", "Residential Construction", "Commercial Projects", "Property Advisory"],
-    image: "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
+    image: "/images/divisions/real-estate.webp",
   },
   {
     id: "automobile-logistics",
@@ -70,25 +70,25 @@ export const SERVICES = [
     title: "Automobile & Logistics",
     short: "Vehicle import/export & freight logistics",
     description:
-      "End-to-end vehicle import/export, freight logistics, customs clearance, and secure warehousing — connecting Nigerian businesses to global markets with precision.",
+      "Vehicle importation, goods import and export, freight logistics, customs clearing and warehousing enquiries.",
     icon: "🚗",
     href: "/services/automobile-logistics",
     oldHref: "/automobile-logistics/",
     features: ["Vehicle Importation", "Goods Import/Export", "Freight & Cargo", "Customs Clearing", "Warehousing", "Agri-Commodity Export"],
-    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80",
+    image: "/images/divisions/automobile-logistics.webp",
   },
   {
     id: "agriculture",
     number: "05",
     title: "Farming & Livestock",
-    short: "Feeding Nigeria, securing tomorrow",
+    short: "Farming, livestock and farm-produce enquiries",
     description:
-      "Integrated farming operations spanning piggery, cattle rearing, fish farming, poultry, and crop cultivation — actively contributing to Nigeria's food security agenda.",
+      "Farming and livestock services covering piggery, cattle, aquaculture, poultry, crop cultivation and produce supply.",
     icon: "🌱",
     href: "/services/agriculture",
     oldHref: "/farming-livestock/",
     features: ["Piggery", "Cattle Rearing", "Fish Farming", "Poultry", "Crop Cultivation"],
-    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=600&q=80",
+    image: "/images/divisions/agriculture.webp",
   },
   {
     id: "general-contracting",
@@ -96,12 +96,12 @@ export const SERVICES = [
     title: "General Contractors",
     short: "Building with precision and integrity",
     description:
-      "Professional building construction, electrical and solar installations, metal fabrication, and renovation works — delivered on time, within budget, to exacting standards.",
+      "Construction, renovation, electrical and solar installation, metal fabrication and related contracting enquiries.",
     icon: "🔧",
     href: "/services/general-contracting",
     oldHref: "/general-contractors/",
     features: ["Building Construction", "Electrical Installations", "Solar Systems", "Metal Fabrication", "Renovation"],
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
+    image: "/images/divisions/general-contracting.webp",
   },
   {
     id: "cac-registration",
@@ -109,21 +109,16 @@ export const SERVICES = [
     title: "CAC Registration",
     short: "Formalise your business with ease",
     description:
-      "Complete business registration services — Business Names, Limited Liability Companies, PLCs, NGOs/Trustees, and all post-incorporation requirements — fast, accurate, fully handled.",
+      "Business Name, limited company, PLC, Incorporated Trustees, post-incorporation and tax-related registration enquiries.",
     icon: "📋",
     href: "/services/cac-registration",
     oldHref: "/cac-registration/",
     features: ["Business Name Registration", "Private Limited (Ltd)", "Public Limited (PLC)", "NGO / Trustees", "Post-Incorporation", "TIN & Tax Compliance"],
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
+    image: "/images/divisions/cac-registration.webp",
   },
 ];
 
-export const STATS = [
-  { number: "7",   suffix: "",  label: "Business Divisions",  description: "Across key sectors of the Nigerian economy" },
-  { number: "500", suffix: "+", label: "Clients Served",      description: "Individuals and organizations across Nigeria" },
-  { number: "5",   suffix: "+", label: "Years of Excellence", description: "Trusted, reliable, consistent service" },
-  { number: "100", suffix: "%", label: "Licensed & Regulated", description: "Fully registered with CAC and regulated" },
-];
+export const STATS = [{number:"7",suffix:"",label:"Business Divisions",description:"Across multiple sectors in Nigeria"},{number:"5",suffix:"",label:"Core Values",description:"Accountability, nurturing, dependability, uniqueness and sustainability"}];
 
 export const VALUES = [
   {
@@ -141,7 +136,7 @@ export const VALUES = [
   {
     letter: "D",
     word: "Dependability",
-    description: "When you need us, we show up. Consistent, reliable, and always ready to deliver — without exception.",
+    description: "We aim to build lasting trust through responsible communication and dependable service.",
     icon: "✅",
   },
   {
@@ -159,42 +154,23 @@ export const VALUES = [
 ];
 
 export const WHY_REASONS = [
-  { icon: "🛡", title: "Fully Registered & Licensed",       body: "Fully registered with CAC and licensed as a money lender — operate with complete legal confidence and regulatory compliance." },
+  { icon: "🛡", title: "Accountability", body: "Our values emphasise responsible service and clear communication." },
   { icon: "👥", title: "Client-First Always",               body: "Every product and service is designed around your real needs — accessible, transparent, and community-focused." },
-  { icon: "⚡", title: "Fast & Reliable Processing",        body: "We respond quickly, process efficiently, and deliver results — no unnecessary delays or hidden bureaucracy." },
-  { icon: "💰", title: "Transparent Pricing",               body: "No hidden fees, no surprises. We quote clearly and deliver exactly what we promise at the price agreed." },
+  { icon: "⚡", title: "Clear Enquiry Process", body: "Begin by discussing the relevant service and confirming requirements with the team." },
+  { icon: "💰", title: "Written Terms", body: "Request documented fees and service terms before proceeding with any transaction." },
   { icon: "📍", title: "Community Impact",                  body: "Rooted in Ogun State, we invest in the communities we serve — our success is measured by the lives we transform." },
   { icon: "🏢", title: "7 Diversified Divisions",           body: "From finance to farming, oil & gas to real estate, CAC registration — one trusted partner for all your Nigerian business needs." },
 ];
 
-export const TESTIMONIALS = [
-  {
-    name: "Adebayo Okonkwo",
-    role: "Business Owner, Lagos",
-    body: "ANDUS processed my SME loan in less than 72 hours. No hidden fees, no stress. Their team genuinely cares about your success.",
-    rating: 5,
-  },
-  {
-    name: "Fatima Abdullahi",
-    role: "Entrepreneur, Ogun State",
-    body: "I registered my limited company through ANDUS and it was seamless. They handled everything professionally and kept me informed at every step.",
-    rating: 5,
-  },
-  {
-    name: "Emeka Eze",
-    role: "Factory Manager, Sagamu",
-    body: "We've been using ANDUS for diesel supply for two years. Reliable, competitive pricing, and they always deliver on time — even during scarcity.",
-    rating: 5,
-  },
-];
+export const TESTIMONIALS: {name:string;role:string;body:string;rating:number}[] = [];
 
 export const COMPANY_STORY = {
-  founded: "Fully registered and licensed",
-  registration: "CAC Registered · Licensed Money Lender",
+  founded: "ANDUS International Nigeria Limited",
+  registration: "Registration and licensing claims require documentary verification",
   location: "Bankole Estate, Ibasa Magboro, Ogun State, Nigeria",
   mission: "To provide accessible and transparent financial and business services that empower individuals and organizations to achieve their full potential, transforming lives and communities across Nigeria.",
   vision: "To be the most trusted, diversified, and impactful business group in Nigeria, known for ethical leadership, community transformation, and excellence across all our business divisions.",
-  story: "ANDUS International Nigeria Limited is a fully registered and licensed, multi-sector company committed to empowering individuals, businesses, and communities across Nigeria through accessible, integrity-driven services. Our name is not just a brand — it is a binding pledge. Every letter represents a core value that influences every decision we make.",
+  story: "ANDUS International Nigeria Limited is a multi-sector business group presenting financial, energy, property, logistics, agricultural, contracting and registration services to individuals and businesses in Nigeria. Our name is not just a brand — it is a binding pledge. Every letter represents a core value that influences every decision we make.",
 };
 
 export const NAV_LINKS = [

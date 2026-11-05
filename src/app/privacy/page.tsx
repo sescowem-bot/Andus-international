@@ -1,83 +1,20 @@
-import type { Metadata } from "next";
-import PageHeader from "@/components/ui/PageHeader";
-import Reveal from "@/components/ui/Reveal";
-import { SITE } from "@/lib/data";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "ANDUS International Nigeria's privacy policy — how we collect, use, and protect your personal information.",
-};
-
-const SECTIONS = [
-  {
-    title: "Information We Collect",
-    content: `We collect personal information that you voluntarily provide to us when you apply for a loan, make a service enquiry, register for our investment programme, or contact our team. This includes your name, phone number, email address, residential address, employment details, and financial information relevant to our services. We may also collect information through cookies when you use our website.`,
-  },
-  {
-    title: "How We Use Your Information",
-    content: `Your information is used to assess and process loan applications and service requests, communicate with you about your enquiry or account, fulfil our regulatory compliance obligations as a licensed financial institution, improve our services and client experience, and send you relevant information about ANDUS products and services (which you may opt out of at any time).`,
-  },
-  {
-    title: "Information Sharing",
-    content: `ANDUS International does not sell, rent, or share your personal information with third parties for their marketing purposes. We may share information with regulatory authorities as required by Nigerian law, credit reference agencies for loan assessment purposes, and trusted service partners who assist in our operations under strict confidentiality obligations.`,
-  },
-  {
-    title: "Data Security",
-    content: `We implement appropriate technical and organisational measures to protect your personal information against unauthorised access, loss, or disclosure. All financial data is handled in accordance with Nigerian financial services regulations. However, no transmission over the internet is completely secure, and we encourage clients to take care with how they share personal information online.`,
-  },
-  {
-    title: "Your Rights",
-    content: `You have the right to request access to the personal information we hold about you, request correction of inaccurate information, withdraw consent to marketing communications at any time, and request deletion of your information where we have no legal obligation to retain it. To exercise any of these rights, please contact us using the details below.`,
-  },
-  {
-    title: "Cookies",
-    content: `Our website uses cookies to improve your browsing experience, understand how visitors use our site, and serve relevant content. You may disable cookies in your browser settings, though some functionality may be affected. We do not use cookies to collect sensitive personal information.`,
-  },
-  {
-    title: "Changes to This Policy",
-    content: `ANDUS International may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. The most current version will always be available on our website. Continued use of our services after any update constitutes acceptance of the revised policy.`,
-  },
-  {
-    title: "Contact Us",
-    content: `For any privacy-related queries, requests, or complaints, please contact ANDUS International Nigeria Limited at ${SITE.email} or by post to our registered office: ${SITE.address}.`,
-  },
+import type {Metadata} from "next";
+import Link from "next/link";
+import {SITE} from "@/lib/data";
+export const metadata:Metadata={title:"Privacy Notice",description:"How ANDUS International Nigeria Limited handles website enquiries and personal information."};
+const sections=[
+ {title:"Information collected through this website",body:"When you send an enquiry, we collect your name, email address, telephone number, selected service and the message you provide. Depending on your enquiry, we may also collect proposed business names, an indicative loan amount or a preferred period. We also process limited technical information needed to secure and operate the website."},
+ {title:"Why we process this information",body:"We use your details to respond to your request, communicate about the service you selected, maintain a record of enquiries and protect our systems against abuse. Where relevant, processing may support steps you request before entering a contract or meeting applicable legal obligations. An enquiry is not loan approval, investment acceptance or a registration filed with the Corporate Affairs Commission."},
+ {title:"Sensitive documents and identifiers",body:"Do not enter a BVN, NIN, bank account details, passwords or identity documents in the public enquiry forms or ordinary WhatsApp messages. If supporting documents are required, ANDUS must provide a separately approved and secure method for submitting them."},
+ {title:"Service providers and disclosures",body:"We may use contracted service providers for website hosting, application records, security and email delivery, where configured. Access is restricted to authorised staff and providers with a legitimate service purpose. We may also disclose information where Nigerian law requires it. We do not use your enquiry to subscribe you automatically to marketing communications."},
+ {title:"How long records are kept",body:"Enquiry records are retained only for as long as reasonably required to respond, manage the service relationship and comply with applicable obligations. ANDUS will maintain a documented retention and deletion schedule, with applicable exceptions for records that must legally be kept."},
+ {title:"Security measures",body:"We restrict staff access by role and multi-factor authentication and use encryption in transit. We do not promise that any online service is completely risk-free. If you suspect a privacy or security problem, please contact us promptly using the address below."},
+ {title:"Your privacy rights",body:"Subject to applicable Nigerian data protection law, you may request access, correction or deletion of your information, object to certain processing, and exercise other applicable rights. You may also raise a complaint with the Nigeria Data Protection Commission."},
+ {title:"Cookies and essential access",body:"Essential browser storage may be used to support administrator authentication and the reliable operation of the website. Any optional analytics or advertising cookies would require a separate review and appropriate notice or choice before being introduced."},
+ {title:"Changes and contact",body:"We may update this notice when our services or legal requirements change. For a privacy question or request, contact ANDUS International Nigeria Limited using the details below."}
 ];
-
-export default function PrivacyPage() {
-  return (
-    <>
-      <PageHeader
-        label="Legal"
-        title={<>Privacy <em className="gold-text not-italic">Policy</em></>}
-        description="How ANDUS International Nigeria collects, uses, and protects your personal information."
-      />
-
-      <section className="py-24 bg-andus-dark">
-        <div className="max-w-3xl mx-auto px-6">
-          <Reveal>
-            <div className="glass rounded-2xl p-6 border border-andus-gold/10 mb-12 flex items-start gap-4">
-              <div className="text-andus-gold text-xl mt-0.5">ℹ️</div>
-              <div>
-                <p className="text-andus-text text-sm font-medium mb-1">Last Updated: January 1, 2025</p>
-                <p className="text-andus-subtle text-sm leading-relaxed">
-                  This policy applies to all services provided by ANDUS International Nigeria Limited, a company registered with the Corporate Affairs Commission of Nigeria.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="space-y-10">
-            {SECTIONS.map((section, i) => (
-              <Reveal key={section.title} delay={i * 40}>
-                <div className="border-b border-andus-border/40 pb-10 last:border-0">
-                  <h2 className="font-display text-2xl text-andus-white font-light mb-4">{section.title}</h2>
-                  <p className="text-andus-subtle leading-relaxed">{section.content}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+export default function PrivacyPage(){return <main className="bg-white">
+<header className="border-b border-[#DCE9DF] bg-[#F5FAF6] pb-9 pt-[122px]"><div className="container-xl"><p className="text-[11px] font-bold uppercase tracking-[.2em] text-[#338B2E]">Information and rights</p><h1 className="mt-3 text-[clamp(2.5rem,4.5vw,4rem)] font-extrabold tracking-tight text-[#083F2C]">Privacy notice.</h1><p className="mt-3 max-w-2xl text-sm leading-7 text-[#557362]">How ANDUS International Nigeria Limited handles personal information submitted through the website.</p><p className="mt-4 text-xs font-semibold text-[#557362]">Updated 4 November 2026</p></div></header>
+<section className="py-9 sm:py-12"><div className="container-xl grid gap-7 lg:grid-cols-[.27fr_.73fr]"><aside><div className="rounded-xl border border-[#DCE9DF] bg-[#F5FAF6] p-5"><p className="text-xs font-bold uppercase tracking-widest text-[#338B2E]">Contact details</p><p className="mt-3 text-sm font-semibold text-[#083F2C]">{SITE.fullName}</p><p className="mt-2 text-sm leading-6 text-[#557362]">{SITE.address}</p><a className="mt-3 block break-all text-sm font-bold text-[#005C38] hover:underline" href={"mailto:"+SITE.email}>{SITE.email}</a><Link href="/contact" className="mt-4 inline-block text-sm font-bold text-[#005C38] underline">Contact page</Link></div></aside>
+<div className="space-y-5">{sections.map((item,i)=><section key={item.title} className="border-b border-[#E3EDE5] pb-5"><div className="flex items-start gap-4"><span className="mt-0.5 text-xs font-bold text-[#338B2E]">{String(i+1).padStart(2,"0")}</span><div><h2 className="text-xl font-bold text-[#083F2C]">{item.title}</h2><p className="mt-2 max-w-3xl text-sm leading-[1.85] text-[#557362]">{item.body}</p></div></div></section>)}</div>
+</div></section></main>}

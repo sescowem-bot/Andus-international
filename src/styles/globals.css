@@ -10,8 +10,8 @@
   --font-mono:    "DM Mono", monospace;
 
   /* brand */
-  --brand:        #0C6B37;
-  --brand-light:  #1AAF5D;
+  --brand:        #005C38;
+  --brand-light:  #338B2E;
   --brand-pale:   #F0FAF4;
   --brand-muted:  #D4EEE1;
   --brand-border: #A8DDBE;
@@ -132,7 +132,7 @@ img, video { max-width: 100%; height: auto; }
 
   /* Green filled card */
   .card-brand {
-    background: linear-gradient(145deg, #0C6B37, #0A5A2F);
+    background: linear-gradient(145deg, #005C38, #0A5A2F);
     @apply rounded-2xl text-white;
   }
 
@@ -304,3 +304,19 @@ img, video { max-width: 100%; height: auto; }
 .animate-in {
   animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+/* ANDUS official logo colours, no navy or gold brand identity */
+:root{--brand:#005C38;--brand-light:#338B2E;--brand-pale:#EFF8F0;--ink:#103B2B;--body:#3F624C}
+@keyframes andus-in{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes andus-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.andus-entrance{animation:andus-in .85s cubic-bezier(.16,1,.3,1) both}.andus-float{animation:andus-float 7s ease-in-out infinite}
+.card-premium,.card-surface{transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease}.card-premium:hover,.card-surface:hover{transform:translateY(-5px)}
+@media(prefers-reduced-motion:reduce){.andus-entrance,.andus-float{animation:none!important}.card-premium:hover,.card-surface:hover{transform:none!important}html{scroll-behavior:auto!important}}
+
+/* Final ANDUS corporate identity: extracted from client-provided logo and original page typography. */
+:root{--font-sans:"Outfit",system-ui,-apple-system,sans-serif;--brand:#005C38;--brand-light:#338B2E;--brand-pale:#F4FAF5;--ink:#083F2C;--body:#486A56}
+body{font-family:"Outfit",system-ui,sans-serif}
+h1,h2,h3,h4{font-family:"Outfit",system-ui,sans-serif}
+html{scroll-padding-top:86px}
+*{scroll-margin-top:86px}
+@media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}.andus-entrance{animation:none!important}.card-premium,.card-surface{transition:none!important}}
