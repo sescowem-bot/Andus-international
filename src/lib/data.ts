@@ -29,9 +29,9 @@ export const SERVICES = [
     id: "financial-services",
     number: "01",
     title: "Financial Services",
-    short: "Fast, flexible loans for individuals & businesses",
+    short: "Loan and business-finance enquiries",
     description:
-      "Fast, flexible loan products — consumer loans, SME financing, asset finance, LPO funding, and strategic financial consultation — designed to unlock opportunity for every Nigerian.",
+      "Enquiries for consumer loans, SME financing, asset finance, LPO funding and financial consultations, subject to eligibility and written terms.",
     icon: "💰",
     href: "/services/financial-services",
     oldHref: "/financial-services/",
@@ -42,9 +42,9 @@ export const SERVICES = [
     id: "oil-gas",
     number: "02",
     title: "Oil & Gas",
-    short: "Reliable petroleum supply across Nigeria",
+    short: "Petroleum supply and logistics enquiries",
     description:
-      "Dependable supply of diesel, petroleum, kerosene, LPG, and lubricants — ensuring homes, businesses, and industries across Nigeria never run dry.",
+      "Supply enquiries for diesel, petrol, kerosene, LPG and lubricants, including commercial delivery and logistics requirements.",
     icon: "⚡",
     href: "/services/oil-gas",
     oldHref: "/oil-gas/",
@@ -57,7 +57,7 @@ export const SERVICES = [
     title: "Real Estate & Construction",
     short: "Properties built for lasting value",
     description:
-      "Residential and commercial property sales, strategic land acquisition, and premium construction — creating spaces that stand as testaments to quality craftsmanship.",
+      "Property, land acquisition, construction and renovation enquiries for residential and commercial customers.",
     icon: "🏛",
     href: "/services/real-estate",
     oldHref: "/real-estate/",
@@ -70,7 +70,7 @@ export const SERVICES = [
     title: "Automobile & Logistics",
     short: "Vehicle import/export & freight logistics",
     description:
-      "End-to-end vehicle import/export, freight logistics, customs clearance, and secure warehousing — connecting Nigerian businesses to global markets with precision.",
+      "Vehicle importation, goods import and export, freight logistics, customs clearing and warehousing enquiries.",
     icon: "🚗",
     href: "/services/automobile-logistics",
     oldHref: "/automobile-logistics/",
@@ -81,9 +81,9 @@ export const SERVICES = [
     id: "agriculture",
     number: "05",
     title: "Farming & Livestock",
-    short: "Feeding Nigeria, securing tomorrow",
+    short: "Farming, livestock and farm-produce enquiries",
     description:
-      "Integrated farming operations spanning piggery, cattle rearing, fish farming, poultry, and crop cultivation — actively contributing to Nigeria's food security agenda.",
+      "Farming and livestock services covering piggery, cattle, aquaculture, poultry, crop cultivation and produce supply.",
     icon: "🌱",
     href: "/services/agriculture",
     oldHref: "/farming-livestock/",
@@ -96,7 +96,7 @@ export const SERVICES = [
     title: "General Contractors",
     short: "Building with precision and integrity",
     description:
-      "Professional building construction, electrical and solar installations, metal fabrication, and renovation works — delivered on time, within budget, to exacting standards.",
+      "Construction, renovation, electrical and solar installation, metal fabrication and related contracting enquiries.",
     icon: "🔧",
     href: "/services/general-contracting",
     oldHref: "/general-contractors/",
@@ -109,7 +109,7 @@ export const SERVICES = [
     title: "CAC Registration",
     short: "Formalise your business with ease",
     description:
-      "Complete business registration services — Business Names, Limited Liability Companies, PLCs, NGOs/Trustees, and all post-incorporation requirements — fast, accurate, fully handled.",
+      "Business Name, limited company, PLC, Incorporated Trustees, post-incorporation and tax-related registration enquiries.",
     icon: "📋",
     href: "/services/cac-registration",
     oldHref: "/cac-registration/",
@@ -136,7 +136,7 @@ export const VALUES = [
   {
     letter: "D",
     word: "Dependability",
-    description: "When you need us, we show up. Consistent, reliable, and always ready to deliver — without exception.",
+    description: "We aim to build lasting trust through responsible communication and dependable service.",
     icon: "✅",
   },
   {
@@ -154,10 +154,10 @@ export const VALUES = [
 ];
 
 export const WHY_REASONS = [
-  { icon: "🛡", title: "Fully Registered & Licensed",       body: "Fully registered with CAC and licensed as a money lender — operate with complete legal confidence and regulatory compliance." },
+  { icon: "🛡", title: "Accountability", body: "Our values emphasise responsible service and clear communication." },
   { icon: "👥", title: "Client-First Always",               body: "Every product and service is designed around your real needs — accessible, transparent, and community-focused." },
-  { icon: "⚡", title: "Fast & Reliable Processing",        body: "We respond quickly, process efficiently, and deliver results — no unnecessary delays or hidden bureaucracy." },
-  { icon: "💰", title: "Transparent Pricing",               body: "No hidden fees, no surprises. We quote clearly and deliver exactly what we promise at the price agreed." },
+  { icon: "⚡", title: "Clear Enquiry Process", body: "Begin by discussing the relevant service and confirming requirements with the team." },
+  { icon: "💰", title: "Written Terms", body: "Request documented fees and service terms before proceeding with any transaction." },
   { icon: "📍", title: "Community Impact",                  body: "Rooted in Ogun State, we invest in the communities we serve — our success is measured by the lives we transform." },
   { icon: "🏢", title: "7 Diversified Divisions",           body: "From finance to farming, oil & gas to real estate, CAC registration — one trusted partner for all your Nigerian business needs." },
 ];
@@ -165,12 +165,12 @@ export const WHY_REASONS = [
 export const TESTIMONIALS: {name:string;role:string;body:string;rating:number}[] = [];
 
 export const COMPANY_STORY = {
-  founded: "Fully registered and licensed",
-  registration: "CAC Registered · Licensed Money Lender",
+  founded: "ANDUS International Nigeria Limited",
+  registration: "Registration and licensing claims require documentary verification",
   location: "Bankole Estate, Ibasa Magboro, Ogun State, Nigeria",
   mission: "To provide accessible and transparent financial and business services that empower individuals and organizations to achieve their full potential, transforming lives and communities across Nigeria.",
   vision: "To be the most trusted, diversified, and impactful business group in Nigeria, known for ethical leadership, community transformation, and excellence across all our business divisions.",
-  story: "ANDUS International Nigeria Limited is a fully registered and licensed, multi-sector company committed to empowering individuals, businesses, and communities across Nigeria through accessible, integrity-driven services. Our name is not just a brand — it is a binding pledge. Every letter represents a core value that influences every decision we make.",
+  story: "ANDUS International Nigeria Limited is a multi-sector business group presenting financial, energy, property, logistics, agricultural, contracting and registration services to individuals and businesses in Nigeria. Our name is not just a brand — it is a binding pledge. Every letter represents a core value that influences every decision we make.",
 };
 
 export const NAV_LINKS = [

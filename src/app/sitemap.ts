@@ -18,7 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/loan-application`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/investment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/media`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
   ];
 }
