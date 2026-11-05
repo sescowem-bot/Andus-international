@@ -10,6 +10,7 @@ export const metadata:Metadata={
  authors:[{name:"ANDUS International Nigeria Limited"}],
  openGraph:{type:"website",locale:"en_NG",url:"https://andusinternationalng.com",siteName:"ANDUS International",title:"ANDUS International Nigeria Limited",description:"Empowering lives. Transforming communities."},
  robots:{index:true,follow:true},
+ icons:{icon:[{url:"/andus-icon.svg?v=20261105",type:"image/svg+xml",sizes:"any"}],shortcut:[{url:"/andus-icon.svg?v=20261105",type:"image/svg+xml"}]},
 };
 const organization={"@context":"https://schema.org","@type":"Organization",name:"ANDUS International Nigeria Limited",url:"https://andusinternationalng.com",description:"Nigerian multi-sector business group with seven divisions.",address:{"@type":"PostalAddress",streetAddress:"Bankole Estate, Ibasa Magboro",addressRegion:"Ogun State",addressCountry:"NG"},contactPoint:[{"@type":"ContactPoint",telephone:"+2348068833012",contactType:"customer service"}]};
 export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><head>
